@@ -13,7 +13,7 @@ public interface IBatchService {
 
     void findBatchByBatchNumberAndAdsenseId(Long batchNumber, Long adsenseId);
 
-    List<Batch> findBatchByAdsenseId(Long id);
+    List<Batch> findBatchesByAdsenseId(Long id);
 
     List<BatchDto> findAllByAdsenseId(Long adsenseId);
 

@@ -39,7 +39,7 @@ public class BatchService implements IBatchService {
      * @return
      */
     @Override
-    public List<Batch> findBatchByAdsenseId(Long id) {
+    public List<Batch> findBatchesByAdsenseId(Long id) {
         List<Batch> batchList = batchRepository.findBatchesByAdsenseId(id);
         if (batchList.size() == 0) throw new NotFound("Lote do anúncio não encontrado!");
         return batchList;
@@ -109,7 +109,6 @@ public class BatchService implements IBatchService {
                 }
             }
         }
-//        if (newListBatch.isEmpty()) throw new NotFound("Data de validade ou estoque");
         return newListBatch;
     }
 

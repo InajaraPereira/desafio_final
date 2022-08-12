@@ -4,10 +4,7 @@ import br.com.meli.desafio_final.dto.AdsenseDto;
 import br.com.meli.desafio_final.dto.BatchDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.model.entity.Adsense;
-import br.com.meli.desafio_final.model.entity.Buyer;
-import br.com.meli.desafio_final.model.entity.Item;
-import br.com.meli.desafio_final.model.entity.PurchaseOrder;
+import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.repository.PurchaseOrderRepository;
 import br.com.meli.desafio_final.service.IPurchaseOrderService;
@@ -63,11 +60,11 @@ public class PurchaseOrderService implements IPurchaseOrderService {
         List<Item> itemList = purchaseOrder.getItemList();
         for (Item item : itemList) {
             Adsense adsense = adsenseService.findById(item.getAdsense().getId());
-            List<BatchDto> batchList = batchService.findAllByAdsenseId(adsense.getId());
-            for (BatchDto batchDto : batchList) {
-                if ((LocalDate.now().plusWeeks(3)).isBefore(batchDto.getDueDate())) {
-                    if ((batchDto.getCurrentQuantity() - item.getQuantity()) > 0) {
-                        batchDto.setCurrentQuantity(batchDto.getCurrentQuantity() - item.getQuantity());
+            List<Batch> batchList = batchService.findBatchesByAdsenseId(adsense.getId());
+            for (Batch batch : batchList) {
+                if ((LocalDate.now().plusWeeks(3)).isBefore(batch.getDueDate())) {
+                    if ((batch.getCurrentQuantity() - item.getQuantity()) > 0) {
+                        batch.setCurrentQuantity(batch.getCurrentQuantity() - item.getQuantity());
                     } else {
                         throw new BadRequest("Estoque insuficiente!");
                     }
