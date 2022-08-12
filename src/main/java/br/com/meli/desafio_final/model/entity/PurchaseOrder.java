@@ -30,7 +30,7 @@ public class PurchaseOrder {
     @JsonIgnoreProperties("purchaseOrder")
     private Buyer buyer;
 
-    @OneToMany(mappedBy = "purchaseOrder")
+    @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.PERSIST)
     @JsonIgnoreProperties(value={"itemList"}, allowSetters = true)
     private List<Item> itemList;
 
