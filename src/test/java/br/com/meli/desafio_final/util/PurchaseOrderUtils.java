@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.util;
 
 import br.com.meli.desafio_final.dto.PurchaseOrderDto;
-import br.com.meli.desafio_final.model.entity.PurchaseOrder;
+import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
 
 import java.time.LocalDate;

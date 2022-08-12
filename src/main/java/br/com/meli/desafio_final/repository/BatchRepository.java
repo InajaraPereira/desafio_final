@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.repository;
 
-import br.com.meli.desafio_final.model.entity.Batch;
+import br.com.meli.desafio_final.exception.entity.Batch;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

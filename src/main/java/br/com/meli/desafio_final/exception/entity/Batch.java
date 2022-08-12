@@ -1,11 +1,10 @@
-package br.com.meli.desafio_final.model.entity;
+package br.com.meli.desafio_final.exception.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

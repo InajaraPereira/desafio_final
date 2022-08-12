@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.dto.BatchesByProductDto;
-import br.com.meli.desafio_final.model.entity.Product;
+import br.com.meli.desafio_final.exception.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.service.implementation.ProductService;
 import br.com.meli.desafio_final.util.ProductUtils;

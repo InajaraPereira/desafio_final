@@ -1,5 +1,9 @@
 package br.com.meli.desafio_final.service.implementation;
 
+import br.com.meli.desafio_final.exception.entity.Agent;
+import br.com.meli.desafio_final.exception.entity.Product;
+import br.com.meli.desafio_final.exception.entity.Section;
+import br.com.meli.desafio_final.exception.entity.Seller;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.repository.*;
 import br.com.meli.desafio_final.util.*;

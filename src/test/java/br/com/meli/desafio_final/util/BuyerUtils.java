@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.model.entity.Buyer;
+import br.com.meli.desafio_final.exception.entity.Buyer;
 
 public class BuyerUtils {
 

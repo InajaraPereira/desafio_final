@@ -2,7 +2,6 @@ package br.com.meli.desafio_final.util;
 
 import br.com.meli.desafio_final.dto.AdsenseDto;
 import br.com.meli.desafio_final.dto.AdsenseIdDto;
-import br.com.meli.desafio_final.model.entity.Adsense;
 
 import java.util.ArrayList;
 import java.util.List;

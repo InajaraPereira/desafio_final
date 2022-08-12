@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.dto;
 
-import br.com.meli.desafio_final.model.entity.Adsense;
+import br.com.meli.desafio_final.exception.entity.Adsense;
 import lombok.*;
 
 import java.util.List;

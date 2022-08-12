@@ -1,8 +1,8 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.model.entity.Agent;
-import br.com.meli.desafio_final.model.entity.InBoundOrder;
-import br.com.meli.desafio_final.model.entity.Section;
+import br.com.meli.desafio_final.exception.entity.Agent;
+import br.com.meli.desafio_final.exception.entity.InBoundOrder;
+import br.com.meli.desafio_final.exception.entity.Section;
 
 import java.time.LocalDate;
 

@@ -3,6 +3,7 @@ package br.com.meli.desafio_final.service.implementation;
 import br.com.meli.desafio_final.dto.InBoundOrderDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.Unauthorized;
+import br.com.meli.desafio_final.exception.entity.*;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.repository.*;
 import br.com.meli.desafio_final.service.IInBoundOrderService;

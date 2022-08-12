@@ -3,7 +3,7 @@ import br.com.meli.desafio_final.dto.BatchDto;
 import br.com.meli.desafio_final.dto.AdsensByDueDateAndCategoryDto;
 import br.com.meli.desafio_final.dto.AdsenseBySectionAndDueDateDto;
 import br.com.meli.desafio_final.dto.AdsenseByWarehouseDto;
-import br.com.meli.desafio_final.model.entity.Batch;
+import br.com.meli.desafio_final.exception.entity.Batch;
 
 import br.com.meli.desafio_final.repository.BatchRepository;
 import br.com.meli.desafio_final.util.*;

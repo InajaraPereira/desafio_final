@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.model.entity;
+package br.com.meli.desafio_final.exception.entity;
 
 import br.com.meli.desafio_final.model.enums.Category;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMax;
 
 @Entity
 @Setter

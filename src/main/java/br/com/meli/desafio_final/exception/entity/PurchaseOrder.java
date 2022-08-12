@@ -1,9 +1,8 @@
-package br.com.meli.desafio_final.model.entity;
+package br.com.meli.desafio_final.exception.entity;
 
 import br.com.meli.desafio_final.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.validator.internal.util.stereotypes.Lazy;
 
 import javax.persistence.*;
 import java.time.LocalDate;

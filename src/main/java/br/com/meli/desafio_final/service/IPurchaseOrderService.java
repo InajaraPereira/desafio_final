@@ -1,8 +1,7 @@
 package br.com.meli.desafio_final.service;
 
 import br.com.meli.desafio_final.dto.AdsenseDto;
-import br.com.meli.desafio_final.dto.PurchaseOrderDto;
-import br.com.meli.desafio_final.model.entity.PurchaseOrder;
+import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
 
 import java.util.List;
 

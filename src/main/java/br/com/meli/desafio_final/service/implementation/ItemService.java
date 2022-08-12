@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.model.entity.Item;
+import br.com.meli.desafio_final.exception.entity.Item;
 import br.com.meli.desafio_final.repository.ItemRepository;
 import br.com.meli.desafio_final.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;

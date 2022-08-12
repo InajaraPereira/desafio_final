@@ -1,21 +1,16 @@
 package br.com.meli.desafio_final.service.implementation;
 import br.com.meli.desafio_final.dto.*;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.BadRequest;
-import br.com.meli.desafio_final.model.entity.Batch;
+import br.com.meli.desafio_final.exception.entity.Batch;
 import br.com.meli.desafio_final.repository.BatchRepository;
 import br.com.meli.desafio_final.service.IBatchService;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

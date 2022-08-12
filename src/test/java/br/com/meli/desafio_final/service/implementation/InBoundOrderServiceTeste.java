@@ -1,6 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.dto.InBoundOrderDto;
+import br.com.meli.desafio_final.exception.entity.*;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.repository.InboundOrderRepository;
 import br.com.meli.desafio_final.util.*;

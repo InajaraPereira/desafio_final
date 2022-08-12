@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.model.entity.Warehouse;
+import br.com.meli.desafio_final.exception.entity.Warehouse;
 
 
 public class WarehouseUtils {
