@@ -2,7 +2,7 @@ package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.dto.AdsenseDto;
 import br.com.meli.desafio_final.dto.PurchaseOrderDto;
-import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
+import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.service.implementation.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +20,7 @@ public class PurchaseOrderController {
 
     /**
      * Nesse método salvamos a ordem de pedido e retornamos o status de criado (CREATED)
+     *
      * @param purchaseOrder
      * @return
      */
@@ -30,6 +31,7 @@ public class PurchaseOrderController {
 
     /**
      * Nesse método retornamos produto anunciando
+     *
      * @param purchaseOrderId
      * @return
      */
@@ -41,10 +43,10 @@ public class PurchaseOrderController {
 
     /**
      * Nesse método atualizamos o status de compra
+     *
      * @param purchaseOrderId
      * @return
      */
-    //TODO: fazer DTO
     @PutMapping("/orders/")
     public ResponseEntity<PurchaseOrderDto> update(@RequestParam Long purchaseOrderId) {
         return ResponseEntity.status(HttpStatus.OK)

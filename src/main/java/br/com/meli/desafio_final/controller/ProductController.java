@@ -1,12 +1,15 @@
 package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.dto.BatchesByProductDto;
-import br.com.meli.desafio_final.exception.entity.Product;
+import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.service.implementation.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class ProductController {
 
     /**
      * Nesse método retornamos uma lista com todos os produtos
+     *
      * @return
      */
 
@@ -30,6 +34,7 @@ public class ProductController {
 
     /**
      * Nesse método retornamos uma lista de produtos por categoria
+     *
      * @param querytype
      * @return
      */
@@ -41,6 +46,7 @@ public class ProductController {
 
     /**
      * Nesse método retornamos produto por lote (batch product )
+     *
      * @param productId
      * @param s
      * @return

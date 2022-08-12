@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.dto.BatchesByProductDto;
-import br.com.meli.desafio_final.exception.entity.Product;
+import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.service.implementation.ProductService;
 import br.com.meli.desafio_final.util.ProductUtils;
@@ -30,15 +30,12 @@ public class ProductControllerTest {
     @Mock
     private ProductService productService;
 
-
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
-
     @Test
     public void testGetAllProducts() {
         BDDMockito.when(productService.findAllProducts())
                 .thenReturn(ProductUtils.productList());
-
         ResponseEntity<List<Product>> productResponse = productController.getAll();
+
         assertThat(productResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(productResponse.getBody()).isNotNull();
         assertThat(productResponse.getBody().size()).isNotNull().isPositive().isEqualTo(4);
@@ -48,8 +45,8 @@ public class ProductControllerTest {
     public void testProductsByCategory() {
         BDDMockito.when(productService.findByCategory(Category.FRESH))
                 .thenReturn(ProductUtils.productListFresh());
-
         ResponseEntity<List<Product>> productResponse = productController.getByCategory(Category.FRESH);
+
         assertThat(productResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(productResponse.getBody()).isNotNull();
         assertThat(productResponse.getBody().size()).isNotNull().isPositive().isEqualTo(2);
@@ -60,7 +57,6 @@ public class ProductControllerTest {
         BatchesByProductDto batchesByProductDto = ProductUtils.bachesByProduct();
         BDDMockito.when(productService.findBatchByProduct(1L, null))
                 .thenReturn(batchesByProductDto);
-
         ResponseEntity<BatchesByProductDto> productResponse = productController.findBatchByProduct(1L, null);
 
         assertThat(productResponse.getStatusCode()).isEqualTo(HttpStatus.OK);

@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.service;
 
-import br.com.meli.desafio_final.exception.entity.Item;
+import br.com.meli.desafio_final.model.entity.Item;
 
 import java.util.List;
 

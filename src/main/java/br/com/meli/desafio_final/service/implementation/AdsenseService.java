@@ -1,14 +1,15 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.dto.AdsenseByWarehouseDto;
+import br.com.meli.desafio_final.dto.AdsenseIdDto;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.Adsense;
+import br.com.meli.desafio_final.model.entity.Adsense;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.repository.AdsenseRepository;
 import br.com.meli.desafio_final.service.IAdsenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.meli.desafio_final.dto.AdsenseIdDto;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,17 +25,21 @@ public class AdsenseService implements IAdsenseService {
 
     /**
      * Nesse método estamos retornado/ consultando anúncio Id
+     *
      * @param id
      * @return
      */
     @Override
     public Adsense findById(long id) {
         return adsenseRepository.findById(id)
-                .orElseThrow(() -> { throw new NotFound("Anúncio não cadastrado."); } );
+                .orElseThrow(() -> {
+                    throw new NotFound("Anúncio não cadastrado.");
+                });
     }
 
     /**
      * Nesse método consultamos uma lista de anúncios e retornamos lista caso existe, caso não exibimos uma mensagem de erro
+     *
      * @return
      */
     @Override
@@ -46,6 +51,7 @@ public class AdsenseService implements IAdsenseService {
 
     /**
      * Nesse método retornamos uma lista de anúncio filtrado por categoria
+     *
      * @param category
      * @return
      */
@@ -60,6 +66,7 @@ public class AdsenseService implements IAdsenseService {
 
     /**
      * Nesse método retornamos uma lista de anúncio filtrado por produtos e Id
+     *
      * @param productId
      * @return
      */
@@ -72,6 +79,7 @@ public class AdsenseService implements IAdsenseService {
 
     /**
      * Nesse método retornamos uma lista de anúncio e quantidade por armazém
+     *
      * @param adsenseId
      * @return
      */

@@ -4,8 +4,8 @@ import br.com.meli.desafio_final.dto.AdsenseIdDto;
 import br.com.meli.desafio_final.dto.BatchDto;
 import br.com.meli.desafio_final.dto.BatchesByProductDto;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.Product;
-import br.com.meli.desafio_final.exception.entity.Section;
+import br.com.meli.desafio_final.model.entity.Product;
+import br.com.meli.desafio_final.model.entity.Section;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.repository.ProductRepository;
 import br.com.meli.desafio_final.service.IProductService;
@@ -31,6 +31,7 @@ public class ProductService implements IProductService {
 
     /**
      * Nesse método estamos retornado uma lista de produtos
+     *
      * @return
      */
     @Override
@@ -44,6 +45,7 @@ public class ProductService implements IProductService {
 
     /**
      * Nesse método estamos retornando uma lista de produtos por categoria
+     *
      * @param category
      * @return
      */
@@ -58,6 +60,7 @@ public class ProductService implements IProductService {
 
     /**
      * Nesse método estamos localizando um produto por Id
+     *
      * @param id
      * @return
      */
@@ -70,6 +73,7 @@ public class ProductService implements IProductService {
 
     /**
      * Nesse método estamos retornado um lote de produto
+     *
      * @param id
      * @param s
      * @return

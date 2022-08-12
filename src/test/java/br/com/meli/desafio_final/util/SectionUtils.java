@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.exception.entity.Section;
+import br.com.meli.desafio_final.model.entity.Section;
 import br.com.meli.desafio_final.model.enums.Category;
 
 import static br.com.meli.desafio_final.util.WarehouseUtils.newWarehouse;

@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.dto.BatchesByProductDto;
-import br.com.meli.desafio_final.exception.entity.Product;
+import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.repository.ProductRepository;
 import br.com.meli.desafio_final.util.AdsenseUtilsDto;
@@ -27,33 +27,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-// TODO: RENOMEAR ARQUIVO E CLASSE (ÚLTIMA PALAVRA), PARA MANTER O PADRÃO - REMOVER O "E" DA PALAVRA "TEST"
 public class ProductServiceTeste {
 
     @InjectMocks
-    ProductService productService;
+    private ProductService productService;
 
     @Mock
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Mock
-    SectionService sectionService;
+    private SectionService sectionService;
 
     @Mock
-    AdsenseService adsenseService;
+    private AdsenseService adsenseService;
 
     @Mock
-    BatchService batchService;
-
-    // TODO: REMOVER A PALAVRA "TEST" DOS NOMES DOS MÉTODOS, POIS A MAIORIA NÃO POSSUI
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
+    private BatchService batchService;
 
     @Test
     public void testGetAllProducts() {
-
         BDDMockito.when(productRepository.findAll())
                 .thenReturn(ProductUtils.productList());
-
         List<Product> productListResponse = productService.findAllProducts();
 
         assertThat(productListResponse.size()).isEqualTo(4);
@@ -78,7 +72,6 @@ public class ProductServiceTeste {
     public void testGetProductByCategory() {
         BDDMockito.when(productRepository.findByCategory(Category.FRESH))
                 .thenReturn(ProductUtils.productListFresh());
-
         List<Product> productListResponse = productService.findByCategory(Category.FRESH);
 
         assertThat(productListResponse.size()).isEqualTo(2);
@@ -89,24 +82,22 @@ public class ProductServiceTeste {
     @Test
     public void testIfGetProductByCategoryThrowsException() {
         Exception exceptionResponse = null;
-
         BDDMockito.when(productRepository.findByCategory(Category.FRESH))
                 .thenReturn(new ArrayList<>());
-
         try {
             productService.findByCategory(Category.FRESH);
-        }catch (Exception exception) {
+        } catch (Exception exception) {
             exceptionResponse = exception;
         }
+
         assertThat(exceptionResponse.getMessage()).isEqualTo("Nenhum produto com essa categoria foi encontrado");
     }
 
     @Test
     public void testFindById() {
-        Product product =  ProductUtils.newProduct1ToSave();
+        Product product = ProductUtils.newProduct1ToSave();
         BDDMockito.when(productRepository.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.of(ProductUtils.newProduct1ToSave()));
-
         Product productResponse = productService.findById(1L);
 
         assertThat(productResponse).isNotNull();
@@ -120,9 +111,10 @@ public class ProductServiceTeste {
                 .thenAnswer(invocationOnMock -> Optional.empty());
         try {
             productService.findById(999L);
-        }catch (Exception exception) {
+        } catch (Exception exception) {
             exceptionResponse = exception;
         }
+
         assertThat(exceptionResponse.getMessage()).isEqualTo("Produto inexistente");
     }
 
@@ -130,16 +122,12 @@ public class ProductServiceTeste {
     public void testFindBatchByProduct() {
         BDDMockito.when(productRepository.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.of(ProductUtils.newProduct3ToSave()));
-
         BDDMockito.when(sectionService.findByCategory(ArgumentMatchers.any(Category.class)))
                 .thenReturn(List.of(SectionUtils.newSectionFrozen()));
-
         BDDMockito.when(adsenseService.findByProductId(ArgumentMatchers.anyLong()))
                 .thenReturn(AdsenseUtilsDto.generateAdsenseIdDtoList());
-
         BDDMockito.when(batchService.returnBatchStock(AdsenseUtilsDto.generateAdsenseIdDtoList(), null))
                 .thenReturn(BatchDtoUtils.generateBatchDtoList());
-
         BatchesByProductDto batchesByProductDto = ProductUtils.bachesByProduct();
         BatchesByProductDto response = productService.findBatchByProduct(3L, null);
 

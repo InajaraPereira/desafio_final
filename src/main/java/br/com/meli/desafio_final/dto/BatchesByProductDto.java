@@ -1,11 +1,12 @@
 package br.com.meli.desafio_final.dto;
 
-import br.com.meli.desafio_final.exception.entity.Section;
+import br.com.meli.desafio_final.model.entity.Section;
 import lombok.*;
 
 import java.util.List;
 
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

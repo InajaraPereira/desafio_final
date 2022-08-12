@@ -1,19 +1,22 @@
-package br.com.meli.desafio_final.exception.entity;
+package br.com.meli.desafio_final.model.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Setter @Getter
+@Setter
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Seller{
+public class Seller {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String name;
+
 }

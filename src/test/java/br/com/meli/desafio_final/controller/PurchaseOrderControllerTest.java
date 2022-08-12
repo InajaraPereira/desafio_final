@@ -2,7 +2,7 @@ package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.dto.AdsenseDto;
 import br.com.meli.desafio_final.dto.PurchaseOrderDto;
-import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
+import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.service.implementation.PurchaseOrderService;
 import br.com.meli.desafio_final.util.AdsenseUtils;
@@ -31,13 +31,10 @@ public class PurchaseOrderControllerTest {
     @Mock
     private PurchaseOrderService purchaseOrderService;
 
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
-
     @Test
     public void testCreateInboundOrder() {
         BDDMockito.when(purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave()))
                 .thenReturn(555D);
-
         ResponseEntity<Double> purchaseOrderResponse = purchaseOrderController.save(PurchaseOrderUtils.newPurchase1ToSave());
 
         Assertions.assertThat(purchaseOrderResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -47,10 +44,8 @@ public class PurchaseOrderControllerTest {
     public void testFindAdsensesByPurchaseOrderId() {
         PurchaseOrder purchaseOrder = PurchaseOrderUtils.newPurchase1ToSave();
         List<AdsenseDto> adsenseDtoList = AdsenseDto.convertDto(AdsenseUtils.generateAdsenseList());
-
         BDDMockito.when(purchaseOrderService.findAdsensesByPurchaseOrderId(purchaseOrder.getId()))
                 .thenReturn(adsenseDtoList);
-
         ResponseEntity<List<AdsenseDto>> purchaseOrderResponse = purchaseOrderController
                 .findAdsensesByPurchaseOrderId(purchaseOrder.getId());
 
@@ -64,7 +59,6 @@ public class PurchaseOrderControllerTest {
         purchaseOrderFinish.setStatus(Status.FINISHED);
         BDDMockito.when(purchaseOrderService.updateToFinished(purchaseOrderFinish.getId()))
                 .thenReturn(purchaseOrderFinish);
-
         ResponseEntity<PurchaseOrderDto> purchaseOrderResponse = purchaseOrderController.update(purchaseOrderFinish.getId());
 
         Assertions.assertThat(purchaseOrderResponse.getStatusCode()).isEqualTo(HttpStatus.OK);

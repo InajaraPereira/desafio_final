@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.exception.entity.Adsense;
+import br.com.meli.desafio_final.model.entity.Adsense;
 
 import java.util.ArrayList;
 import java.util.List;

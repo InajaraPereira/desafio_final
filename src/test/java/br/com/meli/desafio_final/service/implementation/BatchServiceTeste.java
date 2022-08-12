@@ -1,10 +1,10 @@
 package br.com.meli.desafio_final.service.implementation;
-import br.com.meli.desafio_final.dto.BatchDto;
+
 import br.com.meli.desafio_final.dto.AdsensByDueDateAndCategoryDto;
 import br.com.meli.desafio_final.dto.AdsenseBySectionAndDueDateDto;
 import br.com.meli.desafio_final.dto.AdsenseByWarehouseDto;
-import br.com.meli.desafio_final.exception.entity.Batch;
-
+import br.com.meli.desafio_final.dto.BatchDto;
+import br.com.meli.desafio_final.model.entity.Batch;
 import br.com.meli.desafio_final.repository.BatchRepository;
 import br.com.meli.desafio_final.util.*;
 import org.assertj.core.api.Assertions;
@@ -26,7 +26,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-// TODO: RENOMEAR ARQUIVO E CLASSE (ÚLTIMA PALAVRA), PARA MANTER O PADRÃO - REMOVER O "E" DA PALAVRA "TEST"
 public class BatchServiceTeste {
 
     @InjectMocks
@@ -35,27 +34,21 @@ public class BatchServiceTeste {
     @Mock
     private BatchRepository batchRepository;
 
-
-    // TODO: REMOVER A PALAVRA "TEST" DOS NOMES DOS MÉTODOS, POIS A MAIORIA NÃO POSSUI
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
-
     @Test
     public void testSaveBatch() {
-            Batch batch = BatchUtils.newBatch1ToSave();
-            BDDMockito.when(batchRepository.save(batch))
-                    .thenReturn(batch);
+        Batch batch = BatchUtils.newBatch1ToSave();
+        BDDMockito.when(batchRepository.save(batch))
+                .thenReturn(batch);
+        Batch saveBatchResponse = batchService.saveBatch(batch);
 
-           Batch saveBatchResponse = batchService.saveBatch(batch);
-
-            Assertions.assertThat(saveBatchResponse).isNotNull();
-        }
+        Assertions.assertThat(saveBatchResponse).isNotNull();
+    }
 
     @Test
     public void testFindBatchByAdsenseId() {
         Batch batch = BatchUtils.newBatch1ToSave();
         BDDMockito.when(batchRepository.findAllByAdsenseId(batch.getBatchNumber()))
                 .thenReturn(BatchUtils.BatchList());
-
         List<BatchDto> batchListByAdsenseId = batchService.findAllByAdsenseId(batch.getBatchNumber());
 
         Assertions.assertThat(batchListByAdsenseId).isNotNull();
@@ -67,7 +60,6 @@ public class BatchServiceTeste {
         Batch batch = BatchUtils.newBatch1ToSave();
         BDDMockito.when(batchRepository.findBatchByBatchNumberAndInBoundOrderId(batch.getBatchNumber(), 1L))
                 .thenReturn(Optional.of(batch));
-
         Batch saveBatchResponse = batchService.findByBatchNumberAndInboundOrderId(batch.getBatchNumber(), 1L);
 
         Assertions.assertThat(saveBatchResponse).isNotNull();
@@ -77,7 +69,6 @@ public class BatchServiceTeste {
     public void testIfFindBatchByIdThrowsException() {
         Batch batch = BatchUtils.newBatch1ToSave();
         Exception exceptionResponse = null;
-
         BDDMockito.when(batchRepository.findById(batch.getBatchNumber()))
                 .thenAnswer(invocationOnMock -> Optional.empty());
         try {
@@ -89,13 +80,11 @@ public class BatchServiceTeste {
         assertThat(exceptionResponse.getMessage()).isEqualTo("Lote não encontrado");
     }
 
-    //TODO: REVISAR ESSE TESTE SE ESTÁ OK. O MOCK TEM UM MÉTODO DIFERENTE DO DA LINHA 111
     @Test
     public void testAdsenseByWarehouseAndQuantity() {
         long adsenseId = AdsenseUtils.newAdsense1ToSave().getId();
         BDDMockito.when(batchRepository.getAdsenseByWarehouse(adsenseId))
                 .thenReturn(AdsenseByWarehouseDtoUtils.AdsenseByWarehouseDtoList());
-
         List<AdsenseByWarehouseDto> saveBatchResponse = batchService.getAdsenseByWarehouseAndQuantity(adsenseId);
 
         Assertions.assertThat(saveBatchResponse).isNotNull();
@@ -107,11 +96,8 @@ public class BatchServiceTeste {
         int numberOfDays = 20;
         LocalDate initialDate = LocalDate.now();
         LocalDate finalDate = initialDate.plusDays(numberOfDays);
-
         BDDMockito.when(batchRepository.getAdsenseBySectionAndDate(sectionId, initialDate, finalDate))
-            .thenReturn(AdsenseBySectionAndDueDateDtoUtils.AdsenseBySectionAndDueDateListObject());
-
-
+                .thenReturn(AdsenseBySectionAndDueDateDtoUtils.AdsenseBySectionAndDueDateListObject());
         List<AdsenseBySectionAndDueDateDto> adsenseBySectionAndDueDateDtoList = batchService.findAdsenseBySectionAndDueDate(sectionId, numberOfDays);
 
         Assertions.assertThat(adsenseBySectionAndDueDateDtoList).isNotNull();
@@ -126,19 +112,15 @@ public class BatchServiceTeste {
         String category = "FROZEN";
         String orderAsc = "asc";
         String orderDesc = "desc";
-
-        // TESTA ORDENAÇÃO ASC
         BDDMockito.when(batchRepository.getAdsenseByDueDateAndCategoryAsc(initialDate, finalDate, category))
-            .thenReturn(AdsenseByDueDateAndCategoryDtoUtils.AdsensByDueDateAndCategoryListObjectAsc());
-
+                .thenReturn(AdsenseByDueDateAndCategoryDtoUtils.AdsensByDueDateAndCategoryListObjectAsc());
         List<AdsensByDueDateAndCategoryDto> adsDueDateCategoryDtoListAsc = batchService.findAdsenseByDueDateAndCategory(numberOfDays, category, orderAsc);
 
         assertThat(adsDueDateCategoryDtoListAsc).isNotNull();
 
-        // TESTA ORDENAÇÃO DESC
-        BDDMockito.when(batchRepository.getAdsenseByDueDateAndCategoryDesc(initialDate, finalDate, category))
-            .thenReturn(AdsenseByDueDateAndCategoryDtoUtils.AdsensByDueDateAndCategoryListObjectDesc());
 
+        BDDMockito.when(batchRepository.getAdsenseByDueDateAndCategoryDesc(initialDate, finalDate, category))
+                .thenReturn(AdsenseByDueDateAndCategoryDtoUtils.AdsensByDueDateAndCategoryListObjectDesc());
         List<AdsensByDueDateAndCategoryDto> adsDueDateCategoryDtoListDesc = batchService.findAdsenseByDueDateAndCategory(numberOfDays, category, orderDesc);
 
         assertThat(adsDueDateCategoryDtoListDesc).isNotNull();
@@ -147,10 +129,9 @@ public class BatchServiceTeste {
 
     @Test
     @DisplayName("Retorna uma lista de Batch ordenada por lote.")
-    public void returnBatchStockTestSortL(){
+    public void returnBatchStockTestSortL() {
         BDDMockito.when(batchRepository.findAllByAdsenseId(AdsenseUtils.newAdsense3ToSave().getId()))
                 .thenReturn(BatchUtils.BatchList());
-
         List<BatchDto> batchDtosList = batchService
                 .returnBatchStock(AdsenseUtilsDto.generateAdsenseIdDtoList(), "L");
 
@@ -159,10 +140,9 @@ public class BatchServiceTeste {
 
     @Test
     @DisplayName("Retorna uma lista de Batch ordenada por quantidade.")
-    public void returnBatchStockTestSortQ(){
+    public void returnBatchStockTestSortQ() {
         BDDMockito.when(batchRepository.findAllByAdsenseId(AdsenseUtils.newAdsense3ToSave().getId()))
                 .thenReturn(BatchUtils.BatchList());
-
         List<BatchDto> batchDtosList = batchService
                 .returnBatchStock(AdsenseUtilsDto.generateAdsenseIdDtoList(), "Q");
 
@@ -171,10 +151,9 @@ public class BatchServiceTeste {
 
     @Test
     @DisplayName("Retorna uma lista de Batch ordenada por vencimento.")
-    public void returnBatchStockTestSortV(){
+    public void returnBatchStockTestSortV() {
         BDDMockito.when(batchRepository.findAllByAdsenseId(AdsenseUtils.newAdsense3ToSave().getId()))
                 .thenReturn(BatchUtils.BatchList());
-
         List<BatchDto> batchDtosList = batchService
                 .returnBatchStock(AdsenseUtilsDto.generateAdsenseIdDtoList(), "V");
 

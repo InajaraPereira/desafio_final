@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.exception.entity;
+package br.com.meli.desafio_final.model.entity;
 
 import br.com.meli.desafio_final.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -29,7 +29,9 @@ public class PurchaseOrder {
     @JoinColumn(name = "buyer_id")
     @JsonIgnoreProperties("purchaseOrder")
     private Buyer buyer;
+
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.PERSIST)
     @JsonIgnoreProperties("purchaseOrder")
     private List<Item> itemList;
+
 }

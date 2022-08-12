@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.dto;
 
-import br.com.meli.desafio_final.exception.entity.Batch;
+import br.com.meli.desafio_final.model.entity.Batch;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 public class InBoundOrderDto {
-
     private Long batchNumber;
     private Long adsense_id;
     private float currentTemperature;

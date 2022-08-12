@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.Section;
+import br.com.meli.desafio_final.model.entity.Section;
 import br.com.meli.desafio_final.model.enums.Category;
 import br.com.meli.desafio_final.repository.SectionRepository;
 import br.com.meli.desafio_final.util.SectionUtils;
@@ -19,26 +19,22 @@ import org.mockito.quality.Strictness;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.only;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-// TODO: RENOMEAR ARQUIVO E CLASSE (ÚLTIMA PALAVRA), PARA MANTER O PADRÃO - REMOVER O "E" DA PALAVRA "TEST"
 public class SectionServiceTeste {
 
     @InjectMocks
-    SectionService sectionService;
+    private SectionService sectionService;
 
     @Mock
-    SectionRepository sectionRepository;
-
-    // TODO: REMOVER A PALAVRA "TEST" DOS NOMES DOS MÉTODOS, POIS A MAIORIA NÃO POSSUI
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
+    private SectionRepository sectionRepository;
 
     @Test
     public void testSetAndUpdateCapacity() {
         Section section = SectionUtils.newSectionFresh();
-
         BDDMockito.when(sectionRepository.save(ArgumentMatchers.any(Section.class)))
                 .thenReturn(section);
         sectionService.setAndUpdateCapacity(10D, section);
@@ -55,13 +51,13 @@ public class SectionServiceTeste {
         } catch (Exception exception) {
             exceptionResponse = exception;
         }
+
         assertThat(exceptionResponse.getMessage()).isEqualTo("Setor sem espaço para armazer o lote");
     }
 
     @Test
     public void testUpdateSection() {
         Section section = SectionUtils.newSectionFresh();
-
         BDDMockito.when(sectionRepository.save(ArgumentMatchers.any(Section.class)))
                 .thenReturn(section);
         Section sectionResponse = sectionService.update(section);
@@ -75,7 +71,6 @@ public class SectionServiceTeste {
         Section section = SectionUtils.newSectionRefrigerated();
         BDDMockito.when(sectionRepository.findByCategory(ArgumentMatchers.any(Category.class)))
                 .thenReturn(List.of(section));
-
         List<Section> sectionResponse = sectionService.findByCategory(Category.REFRIGERATED);
 
         assertThat(sectionResponse).isNotNull();
@@ -95,6 +90,7 @@ public class SectionServiceTeste {
         } catch (NotFound exception) {
             exceptionResponse = exception;
         }
+
         assertThat(exceptionResponse.getMessage()).isEqualTo("Categoria não localizada.");
     }
 }

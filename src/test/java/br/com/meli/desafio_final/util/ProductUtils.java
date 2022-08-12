@@ -1,14 +1,13 @@
 package br.com.meli.desafio_final.util;
 
 import br.com.meli.desafio_final.dto.BatchesByProductDto;
-import br.com.meli.desafio_final.exception.entity.Product;
+import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductUtils {
-
     public static Product newProduct1ToSave() {
         return Product.builder()
                 .id(1L)

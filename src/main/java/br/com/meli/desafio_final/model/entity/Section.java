@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.exception.entity;
+package br.com.meli.desafio_final.model.entity;
 
 import br.com.meli.desafio_final.model.enums.Category;
 import lombok.Getter;

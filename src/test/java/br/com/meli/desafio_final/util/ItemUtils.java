@@ -1,12 +1,11 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.exception.entity.Item;
+import br.com.meli.desafio_final.model.entity.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemUtils {
-
     public static Item newItem1ToSave() {
         return Item.builder()
                 .id(1L)
@@ -15,6 +14,7 @@ public class ItemUtils {
                 .adsense(AdsenseUtils.newAdsense1ToSave())
                 .build();
     }
+
     public static Item newItem2ToSave() {
         return Item.builder()
                 .id(2L)
@@ -24,7 +24,7 @@ public class ItemUtils {
                 .build();
     }
 
-    public static List<Item> generatedItemList(){
+    public static List<Item> generatedItemList() {
         List<Item> itemList = new ArrayList<>();
         itemList.add(newItem1ToSave());
         itemList.add(newItem2ToSave());

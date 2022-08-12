@@ -3,7 +3,9 @@ package br.com.meli.desafio_final.controller;
 import br.com.meli.desafio_final.dto.AdsensByDueDateAndCategoryDto;
 import br.com.meli.desafio_final.dto.AdsenseBySectionAndDueDateDto;
 import br.com.meli.desafio_final.service.implementation.BatchService;
-import br.com.meli.desafio_final.util.*;
+import br.com.meli.desafio_final.util.AdsenseByDueDateAndCategoryDtoUtils;
+import br.com.meli.desafio_final.util.AdsenseBySectionAndDueDateDtoUtils;
+import br.com.meli.desafio_final.util.SectionUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
@@ -15,11 +17,9 @@ import org.mockito.quality.Strictness;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -35,10 +35,8 @@ class BatchControllerTest {
     void test_findAdsenseBySectionAndDueDate() {
         long sectionId = SectionUtils.newSectionFresh().getId();
         int numberOfDays = 20;
-
         BDDMockito.when(batchService.findAdsenseBySectionAndDueDate(sectionId, numberOfDays))
-            .thenReturn(AdsenseBySectionAndDueDateDtoUtils.AdsenseBySectionAndDueDateDtoList());
-
+                .thenReturn(AdsenseBySectionAndDueDateDtoUtils.AdsenseBySectionAndDueDateDtoList());
         ResponseEntity<List<AdsenseBySectionAndDueDateDto>> response = batchController.findAdsenseBySectionAndDueDate(sectionId, numberOfDays);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -51,10 +49,8 @@ class BatchControllerTest {
         int numberOfDays = 20;
         String category = "FROZEN";
         String order = "asc";
-
         BDDMockito.when(batchService.findAdsenseByDueDateAndCategory(numberOfDays, category, order))
-            .thenReturn(AdsenseByDueDateAndCategoryDtoUtils.AdsensByDueDateAndCategoryDtoListAsc());
-
+                .thenReturn(AdsenseByDueDateAndCategoryDtoUtils.AdsensByDueDateAndCategoryDtoListAsc());
         ResponseEntity<List<AdsensByDueDateAndCategoryDto>> response = batchController.findAdsenseByDueDateAndCategory(numberOfDays, category, order);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

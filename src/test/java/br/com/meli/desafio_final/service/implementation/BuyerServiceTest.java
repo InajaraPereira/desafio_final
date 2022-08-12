@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.service.implementation;
 
-import br.com.meli.desafio_final.exception.entity.Buyer;
+import br.com.meli.desafio_final.model.entity.Buyer;
 import br.com.meli.desafio_final.repository.BuyerRepository;
 import br.com.meli.desafio_final.util.BuyerUtils;
 import org.assertj.core.api.Assertions;
@@ -22,20 +22,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BuyerServiceTest {
 
     @InjectMocks
-    BuyerService buyerService;
+    private BuyerService buyerService;
 
     @Mock
-    BuyerRepository buyerRepository;
-
-    // TODO: REMOVER A PALAVRA "TEST" DOS NOMES DOS MÉTODOS, POIS A MAIORIA NÃO POSSUI
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
+    private BuyerRepository buyerRepository;
 
     @Test
     public void testFindBuyerById() {
         Buyer buyer = BuyerUtils.newBuyer1ToSave();
         BDDMockito.when(buyerRepository.findById(buyer.getId()))
                 .thenReturn(Optional.of(buyer));
-
         Buyer buyerByIdResponse = buyerService.findById(buyer.getId());
 
         Assertions.assertThat(buyerByIdResponse).isNotNull();
@@ -45,7 +41,6 @@ public class BuyerServiceTest {
     public void testIfFindBatchByIdThrowsException() {
         Buyer buyer = BuyerUtils.newBuyer1ToSave();
         Exception exceptionResponse = null;
-
         BDDMockito.when(buyerRepository.findById(buyer.getId()))
                 .thenAnswer(invocationOnMock -> Optional.empty());
         try {

@@ -1,7 +1,8 @@
 package br.com.meli.desafio_final.service.implementation;
+
 import br.com.meli.desafio_final.dto.*;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.Batch;
+import br.com.meli.desafio_final.model.entity.Batch;
 import br.com.meli.desafio_final.repository.BatchRepository;
 import br.com.meli.desafio_final.service.IBatchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,27 +23,31 @@ public class BatchService implements IBatchService {
 
     /**
      * Nesse método salvamos um lote e retornamos
+     *
      * @param batch
      * @return
      */
     @Override
     public Batch saveBatch(Batch batch) {
-       return batchRepository.save(batch);
+        return batchRepository.save(batch);
     }
+
     /**
      * Nesse método estamos consultando uma lista de anúncio por lote e retornando um status
+     *
      * @param id
      * @return
      */
     @Override
     public List<Batch> findBatchByAdsenseId(Long id) {
         List<Batch> batchList = batchRepository.findBatchesByAdsenseId(id);
-        if(batchList.size() == 0) throw new NotFound("Lote do anúncio não encontrado!");
+        if (batchList.size() == 0) throw new NotFound("Lote do anúncio não encontrado!");
         return batchList;
     }
 
     /**
      * Nesse método estamos retornado um Lote (Batch DTO)
+     *
      * @param adsenseId
      * @return
      */
@@ -56,6 +60,7 @@ public class BatchService implements IBatchService {
 
     /**
      * Nesse método estamos consultando uma lista e retornando produto em estoque
+     *
      * @param adsenseList
      * @param s
      * @return
@@ -72,6 +77,7 @@ public class BatchService implements IBatchService {
 
     /**
      * Nesse método estamos comparando ...
+     *
      * @param batchDtos
      * @param s
      */
@@ -90,13 +96,14 @@ public class BatchService implements IBatchService {
     /**
      * Esse metodo recebe uma lista de lotes e retorna uma lista de lotes filtrada
      * por lotes que tem em estoque e não estão pra vencer nas próximas 3 semanas.
+     *
      * @param batchList
      * @return
      */
     private List<Batch> validateBatch(List<Batch> batchList) {
         List<Batch> newListBatch = new ArrayList<>();
         for (Batch batch : batchList) {
-            if (batch.getCurrentQuantity() > 0){
+            if (batch.getCurrentQuantity() > 0) {
                 if ((LocalDate.now().plusWeeks(3)).isBefore(batch.getDueDate())) {
                     newListBatch.add(batch);
                 }
@@ -108,29 +115,34 @@ public class BatchService implements IBatchService {
 
     /**
      * Nesse método estamos retornando lote (Batch) através do Id
+     *
      * @param batchNumber
      * @param adsenseId
      */
     public void findBatchByBatchNumberAndAdsenseId(Long batchNumber, Long adsenseId) {
         Optional<Batch> batch = batchRepository.findBatchByBatchNumberAndAdsenseId(batchNumber, adsenseId);
-        if(batch.isPresent())
+        if (batch.isPresent())
             throw new NotFound("Produto deste usuário já está cadastrado.");
     }
 
     /**
      * Esse metodo busca um lote pelo seu número e pelo seu inboundOrderId
+     *
      * @param batchNumber
      * @param inboundOrderId
      * @return
      */
     @Override
-    public Batch findByBatchNumberAndInboundOrderId(Long batchNumber, Long inboundOrderId){
+    public Batch findByBatchNumberAndInboundOrderId(Long batchNumber, Long inboundOrderId) {
         return batchRepository.findBatchByBatchNumberAndInBoundOrderId(batchNumber, inboundOrderId)
-                .orElseThrow(() -> {throw new NotFound("Lote não encontrado");});
+                .orElseThrow(() -> {
+                    throw new NotFound("Lote não encontrado");
+                });
     }
 
     /**
      * Nesse método estamos retornando um anúncio, seu armazém e quantidade
+     *
      * @param adsenseId
      * @return
      */
@@ -144,6 +156,7 @@ public class BatchService implements IBatchService {
      * Esse método retorna uma lista de todos os lotes armazenados em um setor de um armazém,
      * filtrados por um período de vencimento
      * e ordenados por sua data de validade
+     *
      * @param sectionId
      * @param numberOfDays
      */
@@ -161,6 +174,7 @@ public class BatchService implements IBatchService {
      * Esse método retorna uma lista de lote dentro do prazo de validade solicitado,
      * que pertencem a uma determinada categoria de produto
      * ordenada de forma crescente ou decrescente pela quantidade
+     *
      * @param numberOfDays
      * @param category
      * @param order
@@ -171,10 +185,10 @@ public class BatchService implements IBatchService {
         LocalDate finalDate = initialDate.plusDays(numberOfDays);
 
         return order.equalsIgnoreCase("asc")
-            ? batchRepository.getAdsenseByDueDateAndCategoryAsc(initialDate, finalDate, category).stream()
+                ? batchRepository.getAdsenseByDueDateAndCategoryAsc(initialDate, finalDate, category).stream()
                 .map((obj) -> new AdsensByDueDateAndCategoryDto(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5]))
                 .collect(Collectors.toList())
-            : batchRepository.getAdsenseByDueDateAndCategoryDesc(initialDate, finalDate, category).stream()
+                : batchRepository.getAdsenseByDueDateAndCategoryDesc(initialDate, finalDate, category).stream()
                 .map((obj) -> new AdsensByDueDateAndCategoryDto(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5]))
                 .collect(Collectors.toList());
     }

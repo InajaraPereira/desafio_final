@@ -4,11 +4,10 @@ import br.com.meli.desafio_final.dto.AdsenseDto;
 import br.com.meli.desafio_final.dto.BatchDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.Adsense;
-import br.com.meli.desafio_final.exception.entity.Buyer;
-import br.com.meli.desafio_final.exception.entity.Item;
-import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
-import br.com.meli.desafio_final.model.entity.*;
+import br.com.meli.desafio_final.model.entity.Adsense;
+import br.com.meli.desafio_final.model.entity.Buyer;
+import br.com.meli.desafio_final.model.entity.Item;
+import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.repository.PurchaseOrderRepository;
 import br.com.meli.desafio_final.service.IPurchaseOrderService;
@@ -39,6 +38,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 
     /**
      * Nesse método estamos salvando um pedido
+     *
      * @param purchaseOrder
      * @return
      */
@@ -56,7 +56,6 @@ public class PurchaseOrderService implements IPurchaseOrderService {
     }
 
     /**
-     *
      * @param purchaseOrder
      * @return
      */
@@ -82,6 +81,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 
     /**
      * Nesse método estamos salvando intem
+     *
      * @param purchaseOrder
      */
     private void saveItemByPurchase(PurchaseOrder purchaseOrder) {
@@ -93,6 +93,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 
     /**
      * Nesse método estamos retornando preço ...
+     *
      * @param itemList
      * @return
      */
@@ -104,6 +105,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 
     /**
      * Nesse ,metódo retornamos pedido por Id
+     *
      * @param id
      * @return
      */
@@ -117,6 +119,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 
     /**
      * Nesse método estamos atualizando o Lista de compra ...
+     *
      * @param purchaseOrderId
      * @return
      */
@@ -130,6 +133,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
 
     /**
      * Nesse método estamos retornando uma lista de anúncio ...
+     *
      * @param purchaseOrderId
      * @return
      */

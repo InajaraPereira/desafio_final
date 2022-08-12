@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.repository;
 
-import br.com.meli.desafio_final.exception.entity.Batch;
+import br.com.meli.desafio_final.model.entity.Batch;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -23,6 +23,7 @@ public interface BatchRepository extends JpaRepository<Batch, Long> {
     /**
      * Essa query recebe como parâmetro do adsense_id e retorna uma lista com a quantidade total de
      * produtos (adsense) por armazém.
+     *
      * @param id (adsense_id)
      */
     @Query(value = "SELECT \n" +
@@ -42,7 +43,7 @@ public interface BatchRepository extends JpaRepository<Batch, Long> {
      * filtrados por um período de vencimento
      * e ordenados por sua data de validade
      *
-     * @param id (section_id)
+     * @param id          (section_id)
      * @param initialDate
      * @param finalDate
      */

@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.exception.entity;
+package br.com.meli.desafio_final.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,10 +7,10 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-public class Agent {
+public class Warehouse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,4 @@ public class Agent {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "warehouse_id")
-    private Warehouse warehouse;
 }

@@ -13,7 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
-
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,34 +26,28 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class AdsenseControllerTest {
 
-    // TODO: PADRONIZAR NOME DOS MOCKS
     @InjectMocks
     private AdsenseController controller;
 
     @Mock
     private AdsenseService service;
 
-    // TODO: REMOVER A PALAVRA "TEST" DOS NOMES DOS MÉTODOS, POIS A MAIORIA NÃO POSSUI
-    // TODO: ADICIONAR @DisplayName() AOS TESTES QUE NÃO O POSSUI
-    // TODO: ADICIONAR O public AOS MÉTODOS
-
     @Test
     public void find_findByCategory_whenAdsensesByCategoryExist() {
         List<AdsenseDto> adsenseList = AdsenseUtilsDto.generateAdsenseDtoList();
         BDDMockito.when(service.findByCategory(ArgumentMatchers.any(Category.class)))
                 .thenReturn(AdsenseUtils.generateAdsenseList());
-
         ResponseEntity<List<AdsenseDto>> response = controller.findByCategory(Category.FRESH);
-
         verify(service, atLeastOnce()).findByCategory(Category.FRESH);
         Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        // TODO: AJUSTAR O IMPORT
+
         assertEquals(response.getBody().size(), 3);
         assertEquals(response.getBody().get(0).getPrice(), adsenseList.get(0).getPrice());
         assertEquals(response.getBody().get(0).getProduct().getId(), adsenseList.get(0).getProduct().getId());
@@ -65,10 +58,8 @@ public class AdsenseControllerTest {
     @DisplayName("Listar anúncios: Valida se retorna uma lista de anúncios.")
     public void findAll_returnListAdsense_whenAdsensesExists() {
         BDDMockito.when(service.findAll())
-            .thenReturn(AdsenseUtils.generateAdsenseList());
-
+                .thenReturn(AdsenseUtils.generateAdsenseList());
         AdsenseDto adsenseDto = AdsenseUtilsDto.newAdsense1ToSave();
-
         ResponseEntity<List<AdsenseDto>> response = controller.findAll();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -83,9 +74,9 @@ public class AdsenseControllerTest {
     @DisplayName("Listar anúncios: Valida se dispara a execeção NOT FOUND quando não há anúncios cadastrados.")
     public void findAll_throwException_whenAdsensesNotExists() {
         BDDMockito.when(service.findAll())
-            .thenAnswer((invocationOnMock) -> {
-                throw new NotFound("💢 Lista de anúncios não encontrada");
-            });
+                .thenAnswer((invocationOnMock) -> {
+                    throw new NotFound("💢 Lista de anúncios não encontrada");
+                });
 
         Exception exception = null;
         try {
@@ -93,8 +84,8 @@ public class AdsenseControllerTest {
         } catch (NotFound ex) {
             exception = ex;
         }
-
         verify(service, atLeastOnce()).findAll();
+
         assertThat(exception.getMessage()).isEqualTo("💢 Lista de anúncios não encontrada");
     }
 
@@ -103,8 +94,7 @@ public class AdsenseControllerTest {
         long adsenseId = AdsenseUtils.newAdsense1ToSave().getId();
         BDDMockito.when(service.findAdsenseByWarehouseAndQuantity(adsenseId))
                 .thenReturn(AdsenseByWarehouseDtoUtils.AdsenseByWarehouseDtoListDto());
-
-        ResponseEntity <List<AdsenseByWarehouseDto>> response = controller.getByAdsenseByWarehouse(adsenseId);
+        ResponseEntity<List<AdsenseByWarehouseDto>> response = controller.getByAdsenseByWarehouse(adsenseId);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();

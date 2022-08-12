@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.dto;
 
-import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
+import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

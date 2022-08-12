@@ -21,9 +21,9 @@ public class AdsenseController {
 
     /**
      * Nesse método retornamos uma lista de anúncios
+     *
      * @return
      */
-    // TODO: colocar DTO
     @GetMapping
     public ResponseEntity<List<AdsenseDto>> findAll() {
         return ResponseEntity.ok(AdsenseDto.convertDto(adsenseService.findAll()));
@@ -31,10 +31,10 @@ public class AdsenseController {
 
     /**
      * Nesse método retornamos anúncio listado por categoria
+     *
      * @param querytype
      * @return
      */
-    // TODO: colocar DTO
     @GetMapping("/list")
     public ResponseEntity<List<AdsenseDto>> findByCategory(@RequestParam Category querytype) {
         return ResponseEntity.ok(AdsenseDto.convertDto(adsenseService.findByCategory(querytype)));
@@ -42,11 +42,12 @@ public class AdsenseController {
 
     /**
      * Nesse método retornamos um lista de anúncio por armazém / ou a qual armazém esse anúncio pertece
+     *
      * @param adsenseId
      * @return
      */
     @GetMapping("/warehouse/{adsenseId}")
-    public ResponseEntity <List<AdsenseByWarehouseDto>> getByAdsenseByWarehouse(@PathVariable Long adsenseId) {
+    public ResponseEntity<List<AdsenseByWarehouseDto>> getByAdsenseByWarehouse(@PathVariable Long adsenseId) {
         return ResponseEntity.status(HttpStatus.OK).body(adsenseService.findAdsenseByWarehouseAndQuantity(adsenseId));
     }
 }

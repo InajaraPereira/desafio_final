@@ -1,13 +1,13 @@
 package br.com.meli.desafio_final.util;
 
 import br.com.meli.desafio_final.dto.BatchDto;
-import br.com.meli.desafio_final.exception.entity.Batch;
+import br.com.meli.desafio_final.model.entity.Batch;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalTime;
 
 public class BatchUtils {
     public static Batch newBatch1ToSave() {
@@ -20,7 +20,7 @@ public class BatchUtils {
                 .initialQuantity(100)
                 .manufacturingDate(LocalDate.of(2022, 05, 03))
                 .manufacturingTime(LocalDateTime.of(LocalDate.of(2022, 05, 03), LocalTime.of(10, 15, 33)))
-                .dueDate(LocalDate.of(2022,12, 8))
+                .dueDate(LocalDate.of(2022, 12, 8))
                 .inBoundOrder(null)
                 .build();
     }
@@ -35,7 +35,7 @@ public class BatchUtils {
                 .initialQuantity(100)
                 .manufacturingDate(LocalDate.of(2022, 05, 03))
                 .manufacturingTime(LocalDateTime.of(LocalDate.of(2022, 05, 03), LocalTime.of(10, 15, 33)))
-                .dueDate(LocalDate.of(2022,12, 8))
+                .dueDate(LocalDate.of(2022, 12, 8))
                 .inBoundOrder(null)
                 .build();
     }
@@ -44,7 +44,7 @@ public class BatchUtils {
         return BatchDto.builder()
                 .batchNumber(3L)
                 .currentQuantity(100)
-                .dueDate(LocalDate.of(2022,12, 8))
+                .dueDate(LocalDate.of(2022, 12, 8))
                 .build();
     }
 
@@ -58,12 +58,12 @@ public class BatchUtils {
                 .initialQuantity(0)
                 .manufacturingDate(LocalDate.of(2022, 05, 03))
                 .manufacturingTime(LocalDateTime.of(LocalDate.of(2022, 05, 03), LocalTime.of(10, 15, 33)))
-                .dueDate(LocalDate.of(2022,12, 8))
+                .dueDate(LocalDate.of(2022, 12, 8))
                 .inBoundOrder(null)
                 .build();
     }
 
-    public static List<Batch> genetadBatchList(){
+    public static List<Batch> genetadBatchList() {
         List<Batch> batchList = new ArrayList<>();
         batchList.add(newBatch1ToSave());
         batchList.add(newBatch2ToSave());
@@ -74,11 +74,11 @@ public class BatchUtils {
         return BatchDto.builder()
                 .batchNumber(3L)
                 .currentQuantity(100)
-                .dueDate(LocalDate.of(2022,12, 8))
+                .dueDate(LocalDate.of(2022, 12, 8))
                 .build();
     }
 
-    public static List<BatchDto> generatadBatchListFail(){
+    public static List<BatchDto> generatadBatchListFail() {
         List<BatchDto> batchList = new ArrayList<>();
         batchList.add(newBatch5ToSave());
         return batchList;
@@ -96,13 +96,13 @@ public class BatchUtils {
         return batchList;
     }
 
-    public static List<Batch> BatchList(){
+    public static List<Batch> BatchList() {
         ArrayList<Batch> batchlist = new ArrayList<>();
         batchlist.add(newBatch1ToSave());
         return batchlist;
     }
 
-    public static List<Batch> BatchListEmpty(){
+    public static List<Batch> BatchListEmpty() {
         ArrayList<Batch> batchlist = new ArrayList<>();
         return batchlist;
     }

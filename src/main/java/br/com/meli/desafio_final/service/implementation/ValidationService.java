@@ -1,10 +1,10 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.BadRequest;
-import br.com.meli.desafio_final.exception.entity.Agent;
-import br.com.meli.desafio_final.exception.entity.Product;
-import br.com.meli.desafio_final.exception.entity.Section;
-import br.com.meli.desafio_final.exception.entity.Seller;
+import br.com.meli.desafio_final.model.entity.Agent;
+import br.com.meli.desafio_final.model.entity.Product;
+import br.com.meli.desafio_final.model.entity.Section;
+import br.com.meli.desafio_final.model.entity.Seller;
 import br.com.meli.desafio_final.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,10 +30,11 @@ public class ValidationService {
 
     /**
      * Metodo Valida a existência de uma Section no DB.
+     *
      * @param section
      */
     public Section validateSection(Section section) {
-       return sectionRepository.findById(section.getId())
+        return sectionRepository.findById(section.getId())
                 .orElseThrow(() -> {
                     throw new BadRequest("Section não encontrada");
                 });
@@ -41,6 +42,7 @@ public class ValidationService {
 
     /**
      * Metodo Valida a existência de um Seller no DB.
+     *
      * @param seller
      */
     public void validateSeller(Seller seller) {
@@ -52,6 +54,7 @@ public class ValidationService {
 
     /**
      * Metodo Valida a existência de um Product no DB.
+     *
      * @param product
      */
     public void validateProduct(Product product) {
@@ -63,6 +66,7 @@ public class ValidationService {
 
     /**
      * Nesse método estamos validando um representante
+     *
      * @param id
      * @return
      */

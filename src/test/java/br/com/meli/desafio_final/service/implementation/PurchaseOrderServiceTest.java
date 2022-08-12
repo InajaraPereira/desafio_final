@@ -1,18 +1,13 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.dto.AdsenseDto;
+import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.PurchaseOrder;
+import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.repository.PurchaseOrderRepository;
-import br.com.meli.desafio_final.util.AdsenseUtils;
-import br.com.meli.desafio_final.util.ItemUtils;
-import br.com.meli.desafio_final.util.PurchaseOrderUtils;
+import br.com.meli.desafio_final.util.*;
 import org.junit.jupiter.api.Assertions;
-
-import br.com.meli.desafio_final.exception.BadRequest;
-import br.com.meli.desafio_final.util.BatchUtils;
-import br.com.meli.desafio_final.util.BuyerUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,11 +22,11 @@ import org.mockito.quality.Strictness;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -56,16 +51,13 @@ public class PurchaseOrderServiceTest {
     private ItemService itemService;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         BDDMockito.when(purchaseOrderRepository.save(PurchaseOrderUtils.newPurchase1ToSave()))
                 .thenReturn(PurchaseOrderUtils.newPurchase1ToSave());
-
         BDDMockito.when(purchaseOrderRepository.findById(PurchaseOrderUtils.newPurchase1ToSave().getId()))
                 .thenReturn(Optional.ofNullable(PurchaseOrderUtils.newPurchase1ToSave()));
-
         BDDMockito.when(buyerService.findById(BuyerUtils.newBuyer1ToSave().getId()))
                 .thenReturn(BuyerUtils.newBuyer1ToSave());
-
         BDDMockito.when(adsenseService.findById(AdsenseUtils.newAdsense1ToSave().getId()))
                 .thenReturn(AdsenseUtils.newAdsense1ToSave());
     }
@@ -75,9 +67,7 @@ public class PurchaseOrderServiceTest {
     public void findById_returnPurchaseOrder_whenIdValid() {
         BDDMockito.when(purchaseOrderRepository.findById(anyLong()))
                 .thenReturn(Optional.of(PurchaseOrderUtils.newPurchase1ToSave()));
-
         PurchaseOrder purchaseOrder = PurchaseOrderUtils.newPurchase1ToSave();
-
         PurchaseOrder purchaseFound = purchaseOrderService.findById(1L);
 
         assertThat(purchaseFound).isNotNull();
@@ -95,6 +85,7 @@ public class PurchaseOrderServiceTest {
     public void updateToFinished_returnPurchaseOrderUpdated_whenUpdateStatus() {
         PurchaseOrder purchaseOrder = purchaseOrderService
                 .updateToFinished(PurchaseOrderUtils.newPurchase1ToSave().getId());
+
         assertThat(purchaseOrder).isNotNull();
         assertThat(purchaseOrder.getStatus()).isEqualTo(Status.FINISHED);
         verify(purchaseOrderRepository, atLeastOnce()).save(purchaseOrder);
@@ -108,6 +99,7 @@ public class PurchaseOrderServiceTest {
                 .thenReturn(ItemUtils.generatedItemList());
         List<AdsenseDto> adsenseDtoList = purchaseOrderService
                 .findAdsensesByPurchaseOrderId(AdsenseUtils.newAdsense3ToSave().getId());
+
         assertThat(adsenseDtoList).isNotNull();
         assertThat(adsenseDtoList.size()).isEqualTo(ItemUtils.generatedItemList().size());
     }
@@ -118,6 +110,7 @@ public class PurchaseOrderServiceTest {
         BDDMockito.when(batchService.findAllByAdsenseId(AdsenseUtils.newAdsense1ToSave().getId()))
                 .thenReturn(BatchUtils.generatadBatchListFail());
         Double totralPrice = purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave());
+
         Assertions.assertEquals(totralPrice, 7.90);
     }
 
@@ -129,6 +122,7 @@ public class PurchaseOrderServiceTest {
         try {
             purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave());
         } catch (BadRequest badRequest) {
+
             assertEquals(badRequest.getMessage(), "Estoque insuficiente!");
         }
     }
@@ -141,6 +135,7 @@ public class PurchaseOrderServiceTest {
         try {
             purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave());
         } catch (BadRequest badRequest) {
+
             assertEquals(badRequest.getMessage(), "Data de validade inferior a 3 semanas!");
         }
     }

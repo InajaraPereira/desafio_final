@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.exception.entity;
+package br.com.meli.desafio_final.model.entity;
 
 import lombok.*;
 
@@ -20,4 +20,5 @@ public class Buyer {
     private Long id;
 
     private String name;
+
 }

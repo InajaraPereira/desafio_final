@@ -9,11 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InboundOrderDtoUtils {
-
     public static InBoundOrderDto newInBoundOrderDto1() {
         InBoundOrderDto inBoundOrderDto1 = new InBoundOrderDto();
-
-         inBoundOrderDto1.setBatchNumber(1L);
+        inBoundOrderDto1.setBatchNumber(1L);
         inBoundOrderDto1.setAdsense_id(AdsenseUtils.newAdsense1ToSave().getId());
         inBoundOrderDto1.setCurrentTemperature(10);
         inBoundOrderDto1.setMinimumTemperature(10F);
@@ -21,8 +19,7 @@ public class InboundOrderDtoUtils {
         inBoundOrderDto1.setInitialQuantity(100);
         inBoundOrderDto1.setManufacturingDate(LocalDate.of(2022, 05, 03));
         inBoundOrderDto1.setManufacturingTime(LocalDateTime.of(LocalDate.of(2022, 05, 03), LocalTime.of(10, 15, 33)));
-        inBoundOrderDto1.setDueDate(LocalDate.of(2022,12, 8));
-
+        inBoundOrderDto1.setDueDate(LocalDate.of(2022, 12, 8));
         return inBoundOrderDto1;
     }
 

@@ -1,7 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.NotFound;
-import br.com.meli.desafio_final.exception.entity.Item;
+import br.com.meli.desafio_final.model.entity.Item;
 import br.com.meli.desafio_final.repository.ItemRepository;
 import br.com.meli.desafio_final.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +22,14 @@ public class ItemService implements IItemService {
 
     /**
      * Nesse método estamos retornado intem através da  ordem de compra
+     *
      * @param purchaseOrderId
      * @return
      */
     @Override
     public List<Item> findItemsByPurchaseOrderId(Long purchaseOrderId) {
         List<Item> itemList = itemRepository.findItemsByPurchaseOrderId(purchaseOrderId);
-        if(itemList.isEmpty()) throw new NotFound("Item não encontrado!");
+        if (itemList.isEmpty()) throw new NotFound("Item não encontrado!");
         return itemList;
     }
 

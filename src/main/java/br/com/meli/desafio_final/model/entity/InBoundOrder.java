@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.exception.entity;
+package br.com.meli.desafio_final.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -33,4 +33,5 @@ public class InBoundOrder {
     @OneToMany(mappedBy = "inBoundOrder", cascade = CascadeType.PERSIST)
     @JsonIgnoreProperties("inBoundOrder")
     private List<Batch> batchStock;
+
 }
