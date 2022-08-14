@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.model.repository;
+package br.com.meli.desafio_final.repository;
 
 import br.com.meli.desafio_final.model.entity.InBoundOrder;
 import org.springframework.data.jpa.repository.JpaRepository;

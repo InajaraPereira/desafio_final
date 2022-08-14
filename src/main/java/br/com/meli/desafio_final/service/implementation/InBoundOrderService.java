@@ -1,11 +1,11 @@
-package br.com.meli.desafio_final.model.service.implementation;
+package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.model.dto.InBoundOrderDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.Unauthorized;
 import br.com.meli.desafio_final.model.entity.*;
-import br.com.meli.desafio_final.model.service.IInBoundOrderService;
-import br.com.meli.desafio_final.model.repository.InboundOrderRepository;
+import br.com.meli.desafio_final.service.IInBoundOrderService;
+import br.com.meli.desafio_final.repository.InboundOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

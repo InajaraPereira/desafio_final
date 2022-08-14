@@ -1,10 +1,10 @@
-package br.com.meli.desafio_final.model.service.implementation;
+package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.dto.*;
 import br.com.meli.desafio_final.model.entity.Batch;
-import br.com.meli.desafio_final.model.repository.BatchRepository;
-import br.com.meli.desafio_final.model.service.IBatchService;
+import br.com.meli.desafio_final.repository.BatchRepository;
+import br.com.meli.desafio_final.service.IBatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

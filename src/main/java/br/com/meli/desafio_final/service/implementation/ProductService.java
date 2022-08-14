@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.model.service.implementation;
+package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.model.dto.AdsenseIdDto;
 import br.com.meli.desafio_final.model.dto.BatchDto;
@@ -7,8 +7,8 @@ import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.entity.Section;
 import br.com.meli.desafio_final.model.enums.Category;
-import br.com.meli.desafio_final.model.service.IProductService;
-import br.com.meli.desafio_final.model.repository.ProductRepository;
+import br.com.meli.desafio_final.service.IProductService;
+import br.com.meli.desafio_final.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

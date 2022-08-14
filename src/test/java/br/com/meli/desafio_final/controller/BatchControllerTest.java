@@ -2,7 +2,7 @@ package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.model.dto.AdsensByDueDateAndCategoryDto;
 import br.com.meli.desafio_final.model.dto.AdsenseBySectionAndDueDateDto;
-import br.com.meli.desafio_final.model.service.implementation.BatchService;
+import br.com.meli.desafio_final.service.implementation.BatchService;
 import br.com.meli.desafio_final.util.AdsenseByDueDateAndCategoryDtoUtils;
 import br.com.meli.desafio_final.util.AdsenseBySectionAndDueDateDtoUtils;
 import br.com.meli.desafio_final.util.SectionUtils;

@@ -1,12 +1,12 @@
-package br.com.meli.desafio_final.model.service.implementation;
+package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.model.dto.AdsenseDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.model.enums.Status;
-import br.com.meli.desafio_final.model.repository.PurchaseOrderRepository;
-import br.com.meli.desafio_final.model.service.IPurchaseOrderService;
+import br.com.meli.desafio_final.repository.PurchaseOrderRepository;
+import br.com.meli.desafio_final.service.IPurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

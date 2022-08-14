@@ -1,11 +1,11 @@
-package br.com.meli.desafio_final.model.service.implementation;
+package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.model.entity.Agent;
 import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.entity.Section;
 import br.com.meli.desafio_final.model.entity.Seller;
-import br.com.meli.desafio_final.model.repository.*;
+import br.com.meli.desafio_final.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

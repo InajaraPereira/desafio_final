@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.model.repository;
+package br.com.meli.desafio_final.repository;
 
 import br.com.meli.desafio_final.model.entity.Section;
 import br.com.meli.desafio_final.model.enums.Category;

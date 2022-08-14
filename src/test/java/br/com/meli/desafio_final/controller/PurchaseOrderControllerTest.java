@@ -4,7 +4,7 @@ import br.com.meli.desafio_final.model.dto.AdsenseDto;
 import br.com.meli.desafio_final.model.dto.PurchaseOrderDto;
 import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
-import br.com.meli.desafio_final.model.service.implementation.PurchaseOrderService;
+import br.com.meli.desafio_final.service.implementation.PurchaseOrderService;
 import br.com.meli.desafio_final.util.AdsenseUtils;
 import br.com.meli.desafio_final.util.PurchaseOrderUtils;
 import org.assertj.core.api.Assertions;

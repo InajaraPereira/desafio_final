@@ -1,9 +1,9 @@
-package br.com.meli.desafio_final.model.service.implementation;
+package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.Buyer;
-import br.com.meli.desafio_final.model.service.IBuyerService;
-import br.com.meli.desafio_final.model.repository.BuyerRepository;
+import br.com.meli.desafio_final.service.IBuyerService;
+import br.com.meli.desafio_final.repository.BuyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

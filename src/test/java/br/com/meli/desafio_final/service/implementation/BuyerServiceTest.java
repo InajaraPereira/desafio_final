@@ -1,8 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.model.entity.Buyer;
-import br.com.meli.desafio_final.model.service.implementation.BuyerService;
-import br.com.meli.desafio_final.model.repository.BuyerRepository;
+import br.com.meli.desafio_final.repository.BuyerRepository;
 import br.com.meli.desafio_final.util.BuyerUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

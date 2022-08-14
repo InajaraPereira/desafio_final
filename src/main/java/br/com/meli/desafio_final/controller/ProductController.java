@@ -3,7 +3,7 @@ package br.com.meli.desafio_final.controller;
 import br.com.meli.desafio_final.model.dto.BatchesByProductDto;
 import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
-import br.com.meli.desafio_final.model.service.implementation.ProductService;
+import br.com.meli.desafio_final.service.implementation.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package br.com.meli.desafio_final.model.service;
+package br.com.meli.desafio_final.service;
 
 import br.com.meli.desafio_final.model.dto.InBoundOrderDto;
 import br.com.meli.desafio_final.model.entity.InBoundOrder;
