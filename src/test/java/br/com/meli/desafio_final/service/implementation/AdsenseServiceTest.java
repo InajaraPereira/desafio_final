@@ -1,11 +1,13 @@
 package br.com.meli.desafio_final.service.implementation;
 
-import br.com.meli.desafio_final.dto.AdsenseByWarehouseDto;
-import br.com.meli.desafio_final.dto.AdsenseIdDto;
+import br.com.meli.desafio_final.model.dto.AdsenseByWarehouseDto;
+import br.com.meli.desafio_final.model.dto.AdsenseIdDto;
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.Adsense;
 import br.com.meli.desafio_final.model.enums.Category;
-import br.com.meli.desafio_final.repository.AdsenseRepository;
+import br.com.meli.desafio_final.model.service.implementation.AdsenseService;
+import br.com.meli.desafio_final.model.service.implementation.BatchService;
+import br.com.meli.desafio_final.model.repository.AdsenseRepository;
 import br.com.meli.desafio_final.util.AdsenseByWarehouseDtoUtils;
 import br.com.meli.desafio_final.util.AdsenseUtils;
 import org.assertj.core.api.Assertions;

@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.dto.BatchesByProductDto;
+import br.com.meli.desafio_final.model.dto.BatchesByProductDto;
 import br.com.meli.desafio_final.model.entity.Product;
 import br.com.meli.desafio_final.model.enums.Category;
 

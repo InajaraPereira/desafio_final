@@ -1,8 +1,9 @@
 package br.com.meli.desafio_final.service.implementation;
 
-import br.com.meli.desafio_final.dto.InBoundOrderDto;
+import br.com.meli.desafio_final.model.dto.InBoundOrderDto;
 import br.com.meli.desafio_final.model.entity.*;
-import br.com.meli.desafio_final.repository.InboundOrderRepository;
+import br.com.meli.desafio_final.model.service.implementation.*;
+import br.com.meli.desafio_final.model.repository.InboundOrderRepository;
 import br.com.meli.desafio_final.util.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

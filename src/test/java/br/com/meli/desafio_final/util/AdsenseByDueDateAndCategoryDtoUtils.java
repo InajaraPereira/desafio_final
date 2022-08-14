@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.dto.AdsensByDueDateAndCategoryDto;
+import br.com.meli.desafio_final.model.dto.AdsensByDueDateAndCategoryDto;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

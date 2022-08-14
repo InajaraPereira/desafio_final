@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.dto.InBoundOrderDto;
+import br.com.meli.desafio_final.model.dto.InBoundOrderDto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

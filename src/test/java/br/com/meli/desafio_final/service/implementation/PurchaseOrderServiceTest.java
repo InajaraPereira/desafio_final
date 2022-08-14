@@ -1,11 +1,12 @@
 package br.com.meli.desafio_final.service.implementation;
 
-import br.com.meli.desafio_final.dto.AdsenseDto;
+import br.com.meli.desafio_final.model.dto.AdsenseDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
-import br.com.meli.desafio_final.repository.PurchaseOrderRepository;
+import br.com.meli.desafio_final.model.service.implementation.*;
+import br.com.meli.desafio_final.model.repository.PurchaseOrderRepository;
 import br.com.meli.desafio_final.util.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

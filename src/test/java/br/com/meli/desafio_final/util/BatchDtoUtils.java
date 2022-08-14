@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.dto.BatchDto;
+import br.com.meli.desafio_final.model.dto.BatchDto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

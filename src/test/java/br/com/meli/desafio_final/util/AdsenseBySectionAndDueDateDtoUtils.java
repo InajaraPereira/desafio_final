@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.dto.AdsenseBySectionAndDueDateDto;
+import br.com.meli.desafio_final.model.dto.AdsenseBySectionAndDueDateDto;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

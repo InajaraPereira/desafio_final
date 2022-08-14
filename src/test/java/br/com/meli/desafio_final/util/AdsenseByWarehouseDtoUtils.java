@@ -1,6 +1,6 @@
 package br.com.meli.desafio_final.util;
 
-import br.com.meli.desafio_final.dto.AdsenseByWarehouseDto;
+import br.com.meli.desafio_final.model.dto.AdsenseByWarehouseDto;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

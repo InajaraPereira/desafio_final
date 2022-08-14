@@ -1,9 +1,9 @@
 package br.com.meli.desafio_final.controller;
 
-import br.com.meli.desafio_final.dto.AdsensByDueDateAndCategoryDto;
-import br.com.meli.desafio_final.dto.AdsenseBySectionAndDueDateDto;
-import br.com.meli.desafio_final.dto.BatchDto;
-import br.com.meli.desafio_final.service.implementation.BatchService;
+import br.com.meli.desafio_final.model.dto.AdsensByDueDateAndCategoryDto;
+import br.com.meli.desafio_final.model.dto.AdsenseBySectionAndDueDateDto;
+import br.com.meli.desafio_final.model.dto.BatchDto;
+import br.com.meli.desafio_final.model.service.implementation.BatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
