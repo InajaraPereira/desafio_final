@@ -2,6 +2,7 @@ package br.com.meli.desafio_final.controller;
 
 import br.com.meli.desafio_final.dto.AdsenseDto;
 import br.com.meli.desafio_final.dto.PurchaseOrderDto;
+import br.com.meli.desafio_final.dto.PurchaseOrderTotalPriceDto;
 import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.service.implementation.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class PurchaseOrderController {
      * @return
      */
     @PostMapping("/orders")
-    public ResponseEntity<Double> save(@RequestBody PurchaseOrder purchaseOrder) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(purchaseOrderService.save(purchaseOrder));
+    public ResponseEntity<PurchaseOrderTotalPriceDto> save(@RequestBody PurchaseOrder purchaseOrder) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new PurchaseOrderTotalPriceDto(purchaseOrderService.save(purchaseOrder)));
     }
 
     /**

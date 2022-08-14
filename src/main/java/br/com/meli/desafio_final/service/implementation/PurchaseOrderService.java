@@ -39,13 +39,14 @@ public class PurchaseOrderService implements IPurchaseOrderService {
      * @return
      */
     @Override
-    public Double save(PurchaseOrder purchaseOrder) {
+    public PurchaseOrder save(PurchaseOrder purchaseOrder) {
         Buyer buyer = buyerService.findById(purchaseOrder.getBuyer().getId());
-        purchaseOrder.setBuyer(buyer);
-        if (validationAdsense(purchaseOrder)) {
+        if (validationPucrhaseOrder(purchaseOrder)) {
+            purchaseOrder.setBuyer(buyer);
+            purchaseOrder.setTotalPrice(totalPrice(purchaseOrder.getItemList()));
             purchaseOrderRepository.save(purchaseOrder);
             saveItemByPurchase(purchaseOrder);
-            return totalPrice(purchaseOrder.getItemList());
+            return purchaseOrder;
         } else {
             throw new BadRequest("Pedido não cadastrado!");
         }
@@ -55,7 +56,7 @@ public class PurchaseOrderService implements IPurchaseOrderService {
      * @param purchaseOrder
      * @return
      */
-    private boolean validationAdsense(PurchaseOrder purchaseOrder) {
+    private boolean validationPucrhaseOrder(PurchaseOrder purchaseOrder) {
         List<Item> itemList = purchaseOrder.getItemList();
         for (Item item : itemList) {
             Adsense adsense = adsenseService.findById(item.getAdsense().getId());

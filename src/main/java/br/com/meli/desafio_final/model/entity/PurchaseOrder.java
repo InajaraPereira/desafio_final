@@ -25,6 +25,8 @@ public class PurchaseOrder {
 
     private LocalDate date;
 
+    private Double totalPrice;
+
     @ManyToOne
     @JoinColumn(name = "buyer_id")
     @JsonIgnoreProperties("purchaseOrder")

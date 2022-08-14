@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IPurchaseOrderService {
 
-    Double save(PurchaseOrder purchaseOrder);
+    PurchaseOrder save(PurchaseOrder purchaseOrder);
 
     PurchaseOrder findById(Long id);
 
