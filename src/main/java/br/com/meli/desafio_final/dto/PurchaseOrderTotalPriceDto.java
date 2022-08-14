@@ -14,8 +14,7 @@ public class PurchaseOrderTotalPriceDto {
 
     private Double totalPrice;
 
-    public PurchaseOrderTotalPriceDto(PurchaseOrder purchaseOrder) {
-        this.totalPrice = purchaseOrder.getTotalPrice();
+    public static PurchaseOrderTotalPriceDto convertDto(PurchaseOrder purchaseOrder) {
+        return new PurchaseOrderTotalPriceDto(purchaseOrder.getTotalPrice());
     }
-
 }

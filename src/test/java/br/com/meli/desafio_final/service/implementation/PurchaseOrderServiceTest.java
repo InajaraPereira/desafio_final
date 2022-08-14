@@ -109,9 +109,9 @@ public class PurchaseOrderServiceTest {
     public void save_returnTotalPrice_whenIsValid() {
         BDDMockito.when(batchService.findBatchesByAdsenseId(AdsenseUtils.newAdsense1ToSave().getId()))
                 .thenReturn(BatchUtils.generatedBatchListok());
-        Double totralPrice = purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave());
+        PurchaseOrder purchaseOrderPrice = purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave());
 
-        Assertions.assertEquals(totralPrice, 7.90);
+        Assertions.assertEquals(purchaseOrderPrice.getTotalPrice(), 7.90);
     }
 
     @Test

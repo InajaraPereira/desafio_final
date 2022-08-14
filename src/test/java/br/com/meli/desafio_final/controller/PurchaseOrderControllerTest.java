@@ -32,15 +32,6 @@ public class PurchaseOrderControllerTest {
     private PurchaseOrderService purchaseOrderService;
 
     @Test
-    public void testCreateInboundOrder() {
-        BDDMockito.when(purchaseOrderService.save(PurchaseOrderUtils.newPurchase1ToSave()))
-                .thenReturn(555D);
-        ResponseEntity<Double> purchaseOrderResponse = purchaseOrderController.save(PurchaseOrderUtils.newPurchase1ToSave());
-
-        Assertions.assertThat(purchaseOrderResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-    }
-
-    @Test
     public void testFindAdsensesByPurchaseOrderId() {
         PurchaseOrder purchaseOrder = PurchaseOrderUtils.newPurchase1ToSave();
         List<AdsenseDto> adsenseDtoList = AdsenseDto.convertDto(AdsenseUtils.generateAdsenseList());

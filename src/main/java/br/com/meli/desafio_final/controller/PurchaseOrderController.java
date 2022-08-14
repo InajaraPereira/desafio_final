@@ -28,7 +28,7 @@ public class PurchaseOrderController {
     @PostMapping("/orders")
     public ResponseEntity<PurchaseOrderTotalPriceDto> save(@RequestBody PurchaseOrder purchaseOrder) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new PurchaseOrderTotalPriceDto(purchaseOrderService.save(purchaseOrder)));
+                .body(PurchaseOrderTotalPriceDto.convertDto(purchaseOrderService.save(purchaseOrder)));
     }
 
     /**
