@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "ee530d8a-0613-45ed-90ef-1552b7f39289",
+		"name": "Desafio 3 - Requisito 6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21749134"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8080/api/v2/fresh-products/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"OPEN\",\n    \"date\": \"2022-08-14\",\n    \"buyer\": {\n        \"id\": 10\n    },\n    \"itemList\": [\n        {\n            \"currentPrice\": 0.20,\n            \"quantity\": 3,\n            \"adsense\": {\n                \"id\": 3\n            }\n        },\n        {\n            \"currentPrice\": 0.20,\n            \"quantity\": 8,\n            \"adsense\": {\n                \"id\": 4\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/v2/fresh-products/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"fresh-products",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8080/api/v2/fresh-products/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"OPEN\",\n    \"date\": \"2022-08-14\",\n    \"buyer\": {\n        \"id\": 5\n    },\n    \"itemList\": [\n        {\n            \"currentPrice\": 15.99,\n            \"quantity\": 3,\n            \"adsense\": {\n                \"id\": 3\n            }\n        },\n        {\n            \"currentPrice\": 13.00,\n            \"quantity\": 8,\n            \"adsense\": {\n                \"id\": 4\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/v2/fresh-products/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"fresh-products",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8080/api/v2/fresh-products/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"OPEN\",\n    \"date\": \"2022-08-14\",\n    \"buyer\": {\n        \"id\": 5\n    },\n    \"itemList\": [\n        {\n            \"currentPrice\": 23.99,\n            \"quantity\": 20,\n            \"adsense\": {\n                \"id\": 3\n            }\n        },\n        {\n            \"currentPrice\": 0.60,\n            \"quantity\": 7,\n            \"adsense\": {\n                \"id\": 4\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/v2/fresh-products/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"fresh-products",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v2/payments/credicard/1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"flag\": \"VISA\",\n    \"number\": \"4561.8965.7569\",\n    \"nameInCard\": \"NATALIA S CORREA\",\n    \"validate\": \"2029-03-12\",\n    \"securityNumber\": \"4565\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/payments/credicard/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"payments",
+						"credicard",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v2/payments/pix/2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"number\": \"698574123654\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/payments/pix/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"payments",
+						"pix",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v2/payments/ticket/3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"number\": \"789654.123985.8.32145.698741.369852147000.123654789636\",\n    \"validate\": \"2029-08-03\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/payments/ticket/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"payments",
+						"ticket",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v2/payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v2/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v2/payments/3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v2/payments/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"payments",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
