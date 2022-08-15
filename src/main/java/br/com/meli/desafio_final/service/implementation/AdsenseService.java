@@ -5,8 +5,8 @@ import br.com.meli.desafio_final.model.dto.AdsenseIdDto;
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.Adsense;
 import br.com.meli.desafio_final.model.enums.Category;
-import br.com.meli.desafio_final.repository.AdsenseRepository;
 import br.com.meli.desafio_final.service.IAdsenseService;
+import br.com.meli.desafio_final.repository.AdsenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
