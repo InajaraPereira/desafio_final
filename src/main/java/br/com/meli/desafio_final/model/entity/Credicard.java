@@ -29,4 +29,8 @@ public class Credicard {
 
     private String securityNumber;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
+
 }

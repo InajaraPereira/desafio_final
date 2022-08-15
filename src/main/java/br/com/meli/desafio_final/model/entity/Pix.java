@@ -2,10 +2,7 @@ package br.com.meli.desafio_final.model.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Setter
@@ -20,5 +17,9 @@ public class Pix {
     private Long id;
 
     private String number;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
 }

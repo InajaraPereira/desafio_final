@@ -30,18 +30,18 @@ public class PaymentController {
     }
 
     @PostMapping("/credicard/{idOrder}")
-    public ResponseEntity<Payment> saveCredicard(@RequestBody Credicard credicard, @PathVariable Long idOrder) {
-        return ResponseEntity.status(HttpStatus.OK).body(paymentService.saveCredicard(credicard, idOrder));
+    public ResponseEntity<Payment> paymenteByCredicard(@RequestBody Credicard credicard, @PathVariable Long idOrder) {
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.paymenteByCredicard(credicard, idOrder));
     }
 
     @PostMapping("/pix/{idOrder}")
-    public ResponseEntity<Payment> savePix(@RequestBody Pix pix, @PathVariable Long idOrder) {
-        return ResponseEntity.status(HttpStatus.OK).body(paymentService.savePix(pix, idOrder));
+    public ResponseEntity<Payment> paymentByPix(@RequestBody Pix pix, @PathVariable Long idOrder) {
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.paymentByPix(pix, idOrder));
     }
 
     @PostMapping("/ticket/{idOrder}")
-    public ResponseEntity<Payment> saveTicket(@RequestBody Ticket ticket, @PathVariable Long idOrder) {
-        return ResponseEntity.status(HttpStatus.OK).body(paymentService.saveTicket(ticket, idOrder));
+    public ResponseEntity<Payment> paymentByTicket(@RequestBody Ticket ticket, @PathVariable Long idOrder) {
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.paymentByTicket(ticket, idOrder));
     }
 
 }

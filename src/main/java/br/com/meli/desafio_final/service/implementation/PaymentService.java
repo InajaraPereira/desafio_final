@@ -3,7 +3,6 @@ package br.com.meli.desafio_final.service.implementation;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.*;
-import br.com.meli.desafio_final.model.enums.PaymentType;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.repository.PaymentRepository;
 import br.com.meli.desafio_final.service.IPaymentService;
@@ -43,57 +42,50 @@ public class PaymentService implements IPaymentService {
         });
     }
 
+
     @Override
-    public Payment saveCredicard(Credicard credicard, Long idOrder) {
+    public Payment paymenteByCredicard(Credicard credicard, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
-        if (credicardService.validateCredicard(credicard)) {
-            if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
+        if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
+            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDateTime.now())
+                    .fullPayment(purchaseOrderFound.getTotalPrice()).purchaseOrder(purchaseOrderFound).build());
+            credicard.setPayment(newPayment);
+            if (credicardService.validateCredicard(credicard)) {
                 purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
-                return paymentRepository.save(Payment.builder()
-                        .paymentType(PaymentType.CREDICARD)
-                        .paymentDate(LocalDateTime.now())
-                        .fullPayment(purchaseOrderFound.getTotalPrice())
-                        .purchaseOrder(purchaseOrderFound)
-                        .build());
+                return newPayment;
             }
-            throw new BadRequest("Carrinho já finalizado.");
         }
-        throw new BadRequest("Pagamento não finalizado!");
+        throw new BadRequest("Carrinho já finalizado.");
     }
 
     @Override
-    public Payment savePix(Pix pix, Long idOrder) {
+    public Payment paymentByPix(Pix pix, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
-        if (pixService.validatePix(pix)) {
-            if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
+        if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
+            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDateTime.now())
+                    .fullPayment(purchaseOrderFound.getTotalPrice()).purchaseOrder(purchaseOrderFound).build());
+            pix.setPayment(newPayment);
+            if (pixService.validatePix(pix)) {
                 purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
-                return paymentRepository.save(Payment.builder()
-                        .paymentType(PaymentType.PIX)
-                        .paymentDate(LocalDateTime.now())
-                        .fullPayment(purchaseOrderFound.getTotalPrice())
-                        .purchaseOrder(purchaseOrderFound)
-                        .build());
+                return newPayment;
             }
-            throw new BadRequest("Carrinho já finalizado");
         }
-        throw new BadRequest("Pagamento não finalizado!");
+        throw new BadRequest("Carrinho já finalizado.");
     }
 
     @Override
-    public Payment saveTicket(Ticket ticket, Long idOrder) {
+    public Payment paymentByTicket(Ticket ticket, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
-        if (ticketService.validateTicket(ticket)) {
-            if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
+        if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
+            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDateTime.now())
+                    .fullPayment(purchaseOrderFound.getTotalPrice()).purchaseOrder(purchaseOrderFound).build());
+            ticket.setPayment(newPayment);
+            if (ticketService.validateTicket(ticket)) {
                 purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
-                return paymentRepository.save(Payment.builder()
-                        .paymentType(PaymentType.TICKET)
-                        .paymentDate(LocalDateTime.now())
-                        .fullPayment(purchaseOrderFound.getTotalPrice())
-                        .purchaseOrder(purchaseOrderFound)
-                        .build());
+                return newPayment;
             }
-            throw new BadRequest("Carrinho já finalizado");
         }
-        throw new BadRequest("Pagamento não finalizado!");
+        throw new BadRequest("Carrinho já finalizado");
     }
+
 }

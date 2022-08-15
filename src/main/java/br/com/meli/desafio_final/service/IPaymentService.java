@@ -1,9 +1,6 @@
 package br.com.meli.desafio_final.service;
 
-import br.com.meli.desafio_final.model.entity.Credicard;
-import br.com.meli.desafio_final.model.entity.Payment;
-import br.com.meli.desafio_final.model.entity.Pix;
-import br.com.meli.desafio_final.model.entity.Ticket;
+import br.com.meli.desafio_final.model.entity.*;
 
 import java.util.List;
 
@@ -13,10 +10,10 @@ public interface IPaymentService {
 
     Payment findBydId(Long id);
 
-    Payment saveCredicard(Credicard credicard, Long idOrder);
+    Payment paymenteByCredicard(Credicard credicard, Long idOrder);
 
-    Payment savePix(Pix pix, Long idOrder);
+    Payment paymentByPix(Pix pix, Long idOrder);
 
-    Payment saveTicket(Ticket ticket, Long idOrder);
+    Payment paymentByTicket(Ticket ticket, Long idOrder);
 
 }

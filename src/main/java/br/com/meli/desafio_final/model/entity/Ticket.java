@@ -2,10 +2,7 @@ package br.com.meli.desafio_final.model.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -23,5 +20,9 @@ public class Ticket {
     private String number;
 
     private LocalDate validate;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
 }
