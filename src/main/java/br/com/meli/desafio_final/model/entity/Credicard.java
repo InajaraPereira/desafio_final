@@ -21,7 +21,7 @@ public class Credicard {
     @Enumerated(EnumType.STRING)
     private Flag flag;
 
-    private String number;
+    private String credicardNumber;
 
     private String nameInCard;
 

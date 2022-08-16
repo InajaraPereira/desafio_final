@@ -18,7 +18,7 @@ public class CredicardService {
 
     public boolean validateCredicard(Credicard credicard) {
         if (credicard.getValidate().isAfter(LocalDate.now())) {
-            if (credicard.getNumber().length() <= 16) {
+            if (credicard.getCredicardNumber().length() >= 13 && credicard.getCredicardNumber().length() <=16) {
                 if (isValidCVVNumber(credicard.getSecurityNumber())) {
                     credicard.setSecurityNumber(encondedCarNumber(credicard.getSecurityNumber()));
                     credicardRepository.save(credicard);

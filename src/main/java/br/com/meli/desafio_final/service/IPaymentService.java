@@ -13,6 +13,8 @@ public interface IPaymentService {
 
     Payment findBydId(Long id);
 
+    List<Object> findPaymentByCredicard(Long id);
+
     Payment paymenteByCredicard(Credicard credicard, Long idOrder);
 
     Payment paymentByPix(Pix pix, Long idOrder);

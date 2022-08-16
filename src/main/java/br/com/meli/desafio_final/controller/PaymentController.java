@@ -1,5 +1,6 @@
 package br.com.meli.desafio_final.controller;
 
+import br.com.meli.desafio_final.model.dto.PaymentByCredicardDto;
 import br.com.meli.desafio_final.model.entity.Credicard;
 import br.com.meli.desafio_final.model.entity.Payment;
 import br.com.meli.desafio_final.model.entity.Pix;
@@ -27,6 +28,11 @@ public class PaymentController {
     @GetMapping("/{id}")
     public ResponseEntity<Payment> findById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(paymentService.findBydId(id));
+    }
+
+    @GetMapping("/credicard/{idPayment}")
+    public ResponseEntity<Object> findPaymentByCredicard(@PathVariable Long idPayment) {
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.findPaymentByCredicard(idPayment));
     }
 
     @PostMapping("/credicard/{idOrder}")

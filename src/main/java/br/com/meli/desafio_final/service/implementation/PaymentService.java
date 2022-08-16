@@ -2,6 +2,7 @@ package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
+import br.com.meli.desafio_final.model.dto.PaymentByCredicardDto;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.repository.PaymentRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PaymentService implements IPaymentService {
@@ -40,6 +42,13 @@ public class PaymentService implements IPaymentService {
         return paymentRepository.findById(id).orElseThrow(() -> {
             throw new NotFound("Pagamento inexistente");
         });
+    }
+
+    @Override
+    public List<Object> findPaymentByCredicard(Long id) {
+        return paymentRepository.findPaymentByCredicard(id).stream().map(
+                (obj) -> new PaymentByCredicardDto(obj[0], obj[1], obj[2], obj[3], obj[4])
+        ).collect(Collectors.toList());
     }
 
     @Override
