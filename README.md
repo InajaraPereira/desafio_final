@@ -70,6 +70,6 @@ O requisito individual foi pensado abrangendo a possibilidade de fazer pagamento
 
 - Mostrar um pagamento registrado via cartão e os dados do cartão.
 
-A documentação adicional pode ser vista aqui: <a https://github.com/InajaraPereira/desafio_final/tree/release/0.1.6/Docs>Docs<a/>
+A documentação adicional pode ser vista aqui: Documentação]([https://www.google.com](https://github.com/InajaraPereira/desafio_final/tree/release/0.1.6/Docs))
 
 
