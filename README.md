@@ -60,13 +60,16 @@ O requisito individual foi pensado abrangendo a possibilidade de fazer pagamento
 
 - A possibilidade de registrar um pagamento via cartão de crédito de uma carrinho que mantenha o status OPEN.
 
-- A possibilidade de registrar um pagamento via Pix de uma carrinho que mantenha o status OPEN.
+- A possibilidade de registrar um pagamento via Pix de uma carrinho que tenha o status OPEN.
 
-- A possibilidade de registrar um pagamento via Boleto de uma carrinho que mantenha o status OPEN.
+- A possibilidade de registrar um pagamento via Boleto de uma carrinho que tenha o status OPEN.
 
 - Mostrar uma lista de todos os pagamentos registrados.
 
 - Mostrar apensa um pagamento registrado.
 
 - Mostrar um pagamento registrado via cartão e os dados do cartão.
+
+A documentação adicional pode ser vista aqui: <a https://github.com/InajaraPereira/desafio_final/tree/release/0.1.6/Docs>Docs<a/>
+
 
