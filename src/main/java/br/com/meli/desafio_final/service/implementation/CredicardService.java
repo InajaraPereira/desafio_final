@@ -21,7 +21,6 @@ public class CredicardService {
             if (credicard.getCredicardNumber().length() >= 13 && credicard.getCredicardNumber().length() <=16) {
                 if (isValidCVVNumber(credicard.getSecurityNumber())) {
                     credicard.setSecurityNumber(encondedCarNumber(credicard.getSecurityNumber()));
-                    credicardRepository.save(credicard);
                     return true;
                 }
             }
@@ -39,5 +38,9 @@ public class CredicardService {
             return true;
         }
         throw new BadRequest("CVV inválido.");
+    }
+
+    public Credicard save(Credicard credicard){
+        return credicardRepository.save(credicard);
     }
 }

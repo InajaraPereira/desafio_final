@@ -15,4 +15,23 @@ public class PurchaseOrderUtils {
                 .itemList(ItemUtils.generatedItemList())
                 .build();
     }
+
+    public static PurchaseOrder newPurchase2ToSave() {
+        return PurchaseOrder.builder()
+                .id(2L)
+                .status(Status.OPEN)
+                .date(LocalDate.of(2022, 12, 8))
+                .buyer(BuyerUtils.newBuyer1ToSave())
+                .itemList(ItemUtils.generatedItemList())
+                .build();
+    }
+    public static PurchaseOrder newPurchase3ToSave() {
+        return PurchaseOrder.builder()
+                .id(3L)
+                .status(Status.FINISHED)
+                .date(LocalDate.of(2022, 12, 8))
+                .buyer(BuyerUtils.newBuyer1ToSave())
+                .itemList(ItemUtils.generatedItemList())
+                .build();
+    }
 }

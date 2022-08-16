@@ -13,10 +13,13 @@ public class PixService {
     private PixRepository pixRepository;
 
     public boolean validatePix(Pix pix) {
-        if (pix.getNumber().length() > 11) {
-            pixRepository.save(pix);
+        if (pix.getNumber().length() >= 11) {
             return true;
         }
         throw new BadRequest("Pix inválido.");
+    }
+
+    public Pix save(Pix pix){
+        return pixRepository.save(pix);
     }
 }

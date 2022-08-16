@@ -1,8 +1,8 @@
 package br.com.meli.desafio_final.service.implementation;
 
-import br.com.meli.desafio_final.model.dto.AdsenseDto;
 import br.com.meli.desafio_final.exception.BadRequest;
 import br.com.meli.desafio_final.exception.NotFound;
+import br.com.meli.desafio_final.model.dto.AdsenseDto;
 import br.com.meli.desafio_final.model.entity.PurchaseOrder;
 import br.com.meli.desafio_final.model.enums.Status;
 import br.com.meli.desafio_final.repository.PurchaseOrderRepository;

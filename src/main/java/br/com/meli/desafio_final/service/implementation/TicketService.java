@@ -17,11 +17,14 @@ public class TicketService {
     public boolean validateTicket(Ticket ticket) {
         if(ticket.getValidate().isAfter(LocalDate.now())){
             if (ticket.getNumber().length()>47){
-                ticketRepository.save(ticket);
                 return true;
             }
             throw new BadRequest("Código de barras inválido.");
         }
         throw new BadRequest("Boleto com vencimento expirado.");
+    }
+
+    public Ticket save(Ticket ticket){
+        return ticketRepository.save(ticket);
     }
 }

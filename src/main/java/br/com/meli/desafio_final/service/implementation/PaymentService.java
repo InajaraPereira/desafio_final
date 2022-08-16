@@ -9,7 +9,7 @@ import br.com.meli.desafio_final.service.IPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,32 +43,35 @@ public class PaymentService implements IPaymentService {
         ).collect(Collectors.toList());
     }
 
+
     @Override
     public Payment paymenteByCredicard(Credicard credicard, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
         if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
-            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDateTime.now())
+            credicardService.validateCredicard(credicard);
+            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDate.now())
                     .fullPayment(purchaseOrderFound.getTotalPrice()).purchaseOrder(purchaseOrderFound).build());
             credicard.setPayment(newPayment);
-            if (credicardService.validateCredicard(credicard)) {
-                purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
-                return newPayment;
-            }
+            credicardService.save(credicard);
+            purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
+            return newPayment;
         }
         throw new BadRequest("Carrinho já finalizado.");
     }
+
 
     @Override
     public Payment paymentByPix(Pix pix, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
         if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
-            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDateTime.now())
+            pixService.validatePix(pix);
+            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDate.now())
                     .fullPayment(purchaseOrderFound.getTotalPrice()).purchaseOrder(purchaseOrderFound).build());
             pix.setPayment(newPayment);
-            if (pixService.validatePix(pix)) {
-                purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
-                return newPayment;
-            }
+            pixService.save(pix);
+            purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
+            return newPayment;
+
         }
         throw new BadRequest("Carrinho já finalizado.");
     }
@@ -77,15 +80,15 @@ public class PaymentService implements IPaymentService {
     public Payment paymentByTicket(Ticket ticket, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
         if (purchaseOrderFound.getStatus().equals(Status.OPEN)) {
-            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDateTime.now())
+            ticketService.validateTicket(ticket);
+            Payment newPayment = paymentRepository.save(Payment.builder().paymentDate(LocalDate.now())
                     .fullPayment(purchaseOrderFound.getTotalPrice()).purchaseOrder(purchaseOrderFound).build());
             ticket.setPayment(newPayment);
-            if (ticketService.validateTicket(ticket)) {
-                purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
-                return newPayment;
-            }
+            ticketService.save(ticket);
+            purchaseOrderService.updateToFinished(purchaseOrderFound.getId());
+            return newPayment;
         }
-        throw new BadRequest("Carrinho já finalizado");
+        throw new BadRequest("Carrinho já finalizado.");
     }
 
 }
