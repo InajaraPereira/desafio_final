@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface IPaymentService {
 
+    Payment findyById(Long id);
+
     List<Payment> findAll();
 
     List<Object> findPaymentByCredicard(Long id);

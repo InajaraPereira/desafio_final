@@ -1,6 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.BadRequest;
+import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.dto.PaymentByCredicardDto;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.model.enums.Status;
@@ -30,6 +31,20 @@ public class PaymentService implements IPaymentService {
 
     @Autowired
     private PaymentRepository paymentRepository;
+
+    /**
+     * Este método faz uma busca por id do pagamento.
+     *
+     * @param id
+     * @return payment
+     */
+
+    @Override
+    public Payment findyById(Long id) {
+        return paymentRepository.findById(id).orElseThrow(() -> {
+            throw new NotFound("Pagamento não cadastrado.");
+        });
+    }
 
     /**
      * Esse método retorna uma lista de pagamentos registrados.

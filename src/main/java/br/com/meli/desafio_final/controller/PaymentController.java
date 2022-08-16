@@ -24,6 +24,11 @@ public class PaymentController {
         return ResponseEntity.status(HttpStatus.OK).body(paymentService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Payment> findById(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(paymentService.findyById(id));
+    }
+
     @GetMapping("/credicard/{idPayment}")
     public ResponseEntity<Object> findPaymentByCredicard(@PathVariable Long idPayment) {
         return ResponseEntity.status(HttpStatus.OK).body(paymentService.findPaymentByCredicard(idPayment));
