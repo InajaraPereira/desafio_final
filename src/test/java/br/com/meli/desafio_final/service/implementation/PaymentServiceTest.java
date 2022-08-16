@@ -1,6 +1,7 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.BadRequest;
+import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.entity.Payment;
 import br.com.meli.desafio_final.repository.PaymentRepository;
 import br.com.meli.desafio_final.util.PaymentUtils;
@@ -16,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import java.util.List;
-import java.util.regex.Matcher;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -43,36 +44,46 @@ class PaymentServiceTest {
     private PaymentRepository paymentRepository;
 
     @Test
+    void findById() {
+        BDDMockito.when(paymentRepository.findById(2L)).thenReturn(Optional.ofNullable(PaymentUtils.newPayment1ToSave()));
+        paymentService.findyById(2L);
+    }
+
+    @Test
+    void findById_Exception() {
+        try {
+            paymentService.findyById(2L);
+        } catch (NotFound nt) {
+            assertThat(nt.getMessage().equals("Pagamento não cadastrado."));
+        }
+
+    }
+
+    @Test
     void findAll() {
-        BDDMockito.when(paymentRepository.findAll())
-                .thenReturn(PaymentUtils.generatePaymentList());
+        BDDMockito.when(paymentRepository.findAll()).thenReturn(PaymentUtils.generatePaymentList());
         List<Payment> payments = paymentService.findAll();
         assertThat(payments.get(0).getFullPayment()).isEqualTo(7.9);
     }
-    
+
     @Test
-    void findPaymentByCredicard(){
-        BDDMockito.when(paymentRepository.findPaymentByCredicard(2L))
-                .thenReturn(ArgumentMatchers.anyList());
+    void findPaymentByCredicard() {
+        BDDMockito.when(paymentRepository.findPaymentByCredicard(2L)).thenReturn(ArgumentMatchers.anyList());
         paymentService.findPaymentByCredicard(2L);
     }
 
     @Test
     void paymenteByCredicard() {
-        BDDMockito.when(purchaseOrderService.findById(2L))
-                .thenReturn(PurchaseOrderUtils.newPurchase2ToSave());
-        BDDMockito.when(paymentRepository.save(PaymentUtils.newPayment1ToSave()))
-                .thenReturn(PaymentUtils.newPayment1ToSave());
-        BDDMockito.when(credicardService.validateCredicard(PaymentUtils.newCredicard4ToSave()))
-                .thenReturn(Boolean.TRUE);
+        BDDMockito.when(purchaseOrderService.findById(2L)).thenReturn(PurchaseOrderUtils.newPurchase2ToSave());
+        BDDMockito.when(paymentRepository.save(PaymentUtils.newPayment1ToSave())).thenReturn(PaymentUtils.newPayment1ToSave());
+        BDDMockito.when(credicardService.validateCredicard(PaymentUtils.newCredicard4ToSave())).thenReturn(Boolean.TRUE);
         paymentService.paymenteByCredicard(PaymentUtils.newCredicard1ToSave(), 2L);
 
     }
 
     @Test
     void paymenteByCredicard_Exception() {
-        BDDMockito.when(purchaseOrderService.findById(2L))
-                .thenReturn(PurchaseOrderUtils.newPurchase3ToSave());
+        BDDMockito.when(purchaseOrderService.findById(2L)).thenReturn(PurchaseOrderUtils.newPurchase3ToSave());
         try {
             paymentService.paymenteByCredicard(PaymentUtils.newCredicard1ToSave(), 2L);
         } catch (BadRequest badRequest) {
@@ -82,19 +93,15 @@ class PaymentServiceTest {
 
     @Test
     void paymentByPix() {
-        BDDMockito.when(purchaseOrderService.findById(2L))
-                .thenReturn(PurchaseOrderUtils.newPurchase2ToSave());
-        BDDMockito.when(paymentRepository.save(PaymentUtils.newPayment1ToSave()))
-                .thenReturn(PaymentUtils.newPayment1ToSave());
-        BDDMockito.when(pixService.validatePix(PaymentUtils.newPixtoSave()))
-                .thenReturn(Boolean.TRUE);
+        BDDMockito.when(purchaseOrderService.findById(2L)).thenReturn(PurchaseOrderUtils.newPurchase2ToSave());
+        BDDMockito.when(paymentRepository.save(PaymentUtils.newPayment1ToSave())).thenReturn(PaymentUtils.newPayment1ToSave());
+        BDDMockito.when(pixService.validatePix(PaymentUtils.newPixtoSave())).thenReturn(Boolean.TRUE);
         paymentService.paymentByPix(PaymentUtils.newPixtoSave(), 2L);
     }
 
     @Test
     void paymentByPix_Exception() {
-        BDDMockito.when(purchaseOrderService.findById(2L))
-                .thenReturn(PurchaseOrderUtils.newPurchase3ToSave());
+        BDDMockito.when(purchaseOrderService.findById(2L)).thenReturn(PurchaseOrderUtils.newPurchase3ToSave());
         try {
             paymentService.paymentByPix(PaymentUtils.newPixtoSave(), 2L);
         } catch (BadRequest badRequest) {
@@ -104,19 +111,15 @@ class PaymentServiceTest {
 
     @Test
     void paymentByTicket() {
-        BDDMockito.when(purchaseOrderService.findById(2L))
-                .thenReturn(PurchaseOrderUtils.newPurchase2ToSave());
-        BDDMockito.when(paymentRepository.save(PaymentUtils.newPayment1ToSave()))
-                .thenReturn(PaymentUtils.newPayment1ToSave());
-        BDDMockito.when(ticketService.validateTicket(PaymentUtils.newTickettoSave()))
-                .thenReturn(Boolean.TRUE);
+        BDDMockito.when(purchaseOrderService.findById(2L)).thenReturn(PurchaseOrderUtils.newPurchase2ToSave());
+        BDDMockito.when(paymentRepository.save(PaymentUtils.newPayment1ToSave())).thenReturn(PaymentUtils.newPayment1ToSave());
+        BDDMockito.when(ticketService.validateTicket(PaymentUtils.newTickettoSave())).thenReturn(Boolean.TRUE);
         paymentService.paymentByTicket(PaymentUtils.newTickettoSave(), 2L);
     }
 
     @Test
     void paymentByTicket_Exception() {
-        BDDMockito.when(purchaseOrderService.findById(2L))
-                .thenReturn(PurchaseOrderUtils.newPurchase3ToSave());
+        BDDMockito.when(purchaseOrderService.findById(2L)).thenReturn(PurchaseOrderUtils.newPurchase3ToSave());
         try {
             paymentService.paymentByTicket(PaymentUtils.newTickettoSave(), 2L);
         } catch (BadRequest badRequest) {

@@ -30,6 +30,14 @@ class PaymentControllerTest {
     private PaymentService paymentService;
 
     @Test
+    void findById(){
+        BDDMockito.when(paymentService.findyById(1L)).thenReturn(PaymentUtils.newPayment1ToSave());
+        ResponseEntity<Payment> response = paymentController.findById(1L);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
     void findAll() {
         BDDMockito.when(paymentService.findAll()).thenReturn(PaymentUtils.generatePaymentList());
         ResponseEntity<List<Payment>> response = paymentController.findAll();
