@@ -1,7 +1,6 @@
 package br.com.meli.desafio_final.service.implementation;
 
 import br.com.meli.desafio_final.exception.BadRequest;
-import br.com.meli.desafio_final.exception.NotFound;
 import br.com.meli.desafio_final.model.dto.PaymentByCredicardDto;
 import br.com.meli.desafio_final.model.entity.*;
 import br.com.meli.desafio_final.model.enums.Status;
@@ -35,13 +34,6 @@ public class PaymentService implements IPaymentService {
     @Override
     public List<Payment> findAll() {
         return paymentRepository.findAll();
-    }
-
-    @Override
-    public Payment findBydId(Long id) {
-        return paymentRepository.findById(id).orElseThrow(() -> {
-            throw new NotFound("Pagamento inexistente");
-        });
     }
 
     @Override

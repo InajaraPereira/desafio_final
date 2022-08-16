@@ -11,8 +11,6 @@ public interface IPaymentService {
 
     List<Payment> findAll();
 
-    Payment findBydId(Long id);
-
     List<Object> findPaymentByCredicard(Long id);
 
     Payment paymenteByCredicard(Credicard credicard, Long idOrder);
