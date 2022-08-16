@@ -52,3 +52,21 @@ desenvolvemos testes unitários, garantindo que nossa aplicação funciona, é e
 
 A documentação das rotas está neste [arquivo](Desafio%203%20-%20Projeto%20Integrador.postman_collection.json)
 
+## Desafio agregador III - Requisito VI
+
+O requisito individual foi pensado abrangendo a possibilidade de fazer pagamento neste serviço.
+
+**Com os recursos:**
+
+- A possibilidade de registrar um pagamento via cartão de crédito de uma carrinho que mantenha o status OPEN.
+
+- A possibilidade de registrar um pagamento via Pix de uma carrinho que mantenha o status OPEN.
+
+- A possibilidade de registrar um pagamento via Boleto de uma carrinho que mantenha o status OPEN.
+
+- Mostrar uma lista de todos os pagamentos registrados.
+
+- Mostrar apensa um pagamento registrado.
+
+- Mostrar um pagamento registrado via cartão e os dados do cartão.
+
