@@ -14,6 +14,12 @@ public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
 
+    /**
+     * Este método valida data de vencimento e tamanho do numero do boleto.
+     *
+     * @param ticket
+     * @return true
+     */
     public boolean validateTicket(Ticket ticket) {
         if(ticket.getValidate().isAfter(LocalDate.now())){
             if (ticket.getNumber().length()>47){
@@ -24,6 +30,12 @@ public class TicketService {
         throw new BadRequest("Boleto com vencimento expirado.");
     }
 
+    /**
+     * Este método salva um boleto no banco.
+     *
+     * @param ticket
+     * @return ticket
+     */
     public Ticket save(Ticket ticket){
         return ticketRepository.save(ticket);
     }

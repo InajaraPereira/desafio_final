@@ -31,11 +31,21 @@ public class PaymentService implements IPaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    /**
+     * Esse método retorna uma lista de pagamentos registrados.
+     * @return payments
+     */
     @Override
     public List<Payment> findAll() {
         return paymentRepository.findAll();
     }
 
+    /**
+     * Este método faz uma busca por pagamentos com dados do cartão.
+     *
+     * @param id
+     * @return ObjectList
+     */
     @Override
     public List<Object> findPaymentByCredicard(Long id) {
         return paymentRepository.findPaymentByCredicard(id).stream().map(
@@ -43,6 +53,13 @@ public class PaymentService implements IPaymentService {
         ).collect(Collectors.toList());
     }
 
+    /**
+     * Este método valida e registra um pagamento por cartão de crédito.
+     *
+     * @param credicard
+     * @param idOrder
+     * @return newPayment
+     */
     @Override
     public Payment paymenteByCredicard(Credicard credicard, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
@@ -58,6 +75,13 @@ public class PaymentService implements IPaymentService {
         throw new BadRequest("Carrinho já finalizado.");
     }
 
+    /**
+     * Este método valida e registra um pagamento por pix.
+     *
+     * @param pix
+     * @param idOrder
+     * @return newPayment
+     */
     @Override
     public Payment paymentByPix(Pix pix, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
@@ -74,6 +98,13 @@ public class PaymentService implements IPaymentService {
         throw new BadRequest("Carrinho já finalizado.");
     }
 
+    /**
+     * Este método valida e registra um pagamento por boleto.
+     *
+     * @param ticket
+     * @param idOrder
+     * @return newPayment
+     */
     @Override
     public Payment paymentByTicket(Ticket ticket, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);

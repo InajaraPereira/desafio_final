@@ -12,6 +12,12 @@ public class PixService {
     @Autowired
     private PixRepository pixRepository;
 
+    /**
+     * Este método valida tamanho do número do pix.
+     *
+     * @param pix
+     * @return true
+     */
     public boolean validatePix(Pix pix) {
         if (pix.getNumber().length() >= 11) {
             return true;
@@ -19,6 +25,12 @@ public class PixService {
         throw new BadRequest("Pix inválido.");
     }
 
+    /**
+     * Este método salva um pix no banco.
+     *
+     * @param pix
+     * @return pix
+     */
     public Pix save(Pix pix){
         return pixRepository.save(pix);
     }
