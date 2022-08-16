@@ -43,7 +43,6 @@ public class PaymentService implements IPaymentService {
         ).collect(Collectors.toList());
     }
 
-
     @Override
     public Payment paymenteByCredicard(Credicard credicard, Long idOrder) {
         PurchaseOrder purchaseOrderFound = purchaseOrderService.findById(idOrder);
@@ -58,7 +57,6 @@ public class PaymentService implements IPaymentService {
         }
         throw new BadRequest("Carrinho já finalizado.");
     }
-
 
     @Override
     public Payment paymentByPix(Pix pix, Long idOrder) {
