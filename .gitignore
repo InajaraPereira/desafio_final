@@ -29,5 +29,3 @@ mvnw.cmd
 /target
 .DS_Store
 *.iml
-src/main/resources/application.properties
-*.properties
