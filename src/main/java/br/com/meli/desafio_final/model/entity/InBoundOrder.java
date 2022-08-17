@@ -23,7 +23,7 @@ public class InBoundOrder {
     @JoinColumn(name = "section_id")
     private Section section;
 
-    private LocalDate date = LocalDate.now();
+    private LocalDate date;
 
     @ManyToOne
     @JoinColumn(name = "agent_id")
